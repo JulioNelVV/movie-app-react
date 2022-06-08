@@ -1,0 +1,20 @@
+.logo{
+    width: 15rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 0.2rem;
+}
+.logo__img{
+    display: block;
+    flex-basis: 10%;
+    height: 2rem;
+   
+}
+.logo__title{
+    display: block;
+    flex-basis: 90%;
+    flex-grow: 1;
+    font-size: 1.4rem;
+    color:#FFF;
+}

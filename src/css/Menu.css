@@ -1,0 +1,50 @@
+.menu{
+    display: flex;
+    flex-flow: column nowrap;
+    
+}
+.menu__button{
+    width: 2.2rem;
+    height: 0.2rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #FFF;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+.menu__button-wrapper{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: #E50914;
+    
+    border-radius: 50%;
+}
+.menu__button::after{
+    content: "";
+    position: absolute;
+    width: 2.2rem;
+    height: 0.2rem;
+    background-color: #FFF;
+    border-radius: 1rem;
+    left: 0;
+    top: 0.6rem;
+}
+.menu__button::before{
+    content: "";
+    position: absolute;
+    width: 2.2rem;
+    height: 0.2rem;
+    background-color: #FFF;
+    border-radius: 1rem;
+    left: 0;
+    top: -0.6rem;
+}
+.menu__list{
+    display: none;
+}
