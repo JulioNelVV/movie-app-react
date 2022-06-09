@@ -1,7 +1,7 @@
 .menu{
     display: flex;
     flex-flow: column nowrap;
-    
+    position: relative;
 }
 .menu__button{
     width: 2.2rem;
@@ -9,9 +9,10 @@
     border: none;
     border-radius: 1rem;
     background-color: #FFF;
-    cursor: pointer;
+    
     position: relative;
     outline: none;
+    
 }
 .menu__button-wrapper{
     display: flex;
@@ -22,8 +23,9 @@
     width: 3rem;
     height: 3rem;
     background-color: #E50914;
-    
+    cursor: pointer;
     border-radius: 50%;
+    z-index: 3;
 }
 .menu__button::after{
     content: "";
@@ -34,6 +36,7 @@
     border-radius: 1rem;
     left: 0;
     top: 0.6rem;
+    transition: transform 0.3s ease-in-out;
 }
 .menu__button::before{
     content: "";
@@ -44,7 +47,73 @@
     border-radius: 1rem;
     left: 0;
     top: -0.6rem;
+    transition: transform 0.3s ease-in-out;
 }
 .menu__list{
+    color: #FFF;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+    gap: 1rem;
+    transform: translateX(-100%);
+    transition: none;
+}
+.menu__list li{
+
+}
+.menu__list a{
+    
+    margin: auto;
+    color: #FFF;
+    position: relative;
+
+}
+.menu__list a::after{
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    left: 0%;
+    width: 0%;
+    height: 0.3rem;
+    background-color: #E50914;
+    transition: width 0.5s ease-in-out;
+}
+.menu__list a:hover::after{
+    width: 100%;
+}
+.submenu{
     display: none;
+}
+.--visible{
+    
+    transform: translateX(0%);
+    transition: transform 0.7s ease-in-out;
+}
+.--hidden{
+    
+    transform: translateX(-100%);
+    transition: transform 0.7s ease-in-out;
+}
+.--cross .menu__button{
+   background-color: transparent;
+}
+.--cross .menu__button::after{
+    transform: translateY(-0.6rem) rotateZ(-45deg);
+}
+.--cross .menu__button::before{
+    transform: translateY(0.6rem) rotateZ(45deg);
+}
+.--hamburguer .menu__button{
+    transition: all 0.3s ease-in-out;
 }

@@ -1,9 +1,9 @@
 import Logo from "./Logo";
 
-
+import '../../css/Footer.css'
 function Footer(){
     return(
-        <footer>
+        <footer className="footer">
             <Logo/>
         </footer>
     )
