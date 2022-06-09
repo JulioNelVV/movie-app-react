@@ -10,7 +10,21 @@ function Slider(){
                 <h2 className='movie-title'>Movie title</h2>
                 <p className='movie-description'>Movie Description</p>
             </div>
-            <button className='next'></button>    
+            <button className='next'></button>
+           <div className='slider__pointers'>
+               <div className='slider__pointer'>
+
+               </div>
+               <div className='slider__pointer'>
+                   
+                   </div>
+                   <div className='slider__pointer'>
+                   
+                   </div>
+                   <div className='slider__pointer'>
+                   
+                   </div>
+            </div>  
         </div>
     )
 }

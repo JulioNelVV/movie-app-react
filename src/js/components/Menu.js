@@ -14,9 +14,18 @@ function Menu(){
                 <button className="menu__button">
                 </button>
             </div>
-            
+          
             <ul className={`menu__list --${visible?"visible":"hidden"}`}>
-                
+                <li>
+                    <form className='search-form'>
+                        <input type="text"
+                            className='search-form__text'
+                            placeholder='Search movie...'
+                        />
+                        <input type="button" className='search-form__button'/>
+                    </form>
+                </li>
+               
                 <li>
                     <a href='#'>Home</a>
                 </li>
