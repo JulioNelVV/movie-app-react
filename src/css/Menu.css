@@ -20,8 +20,8 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    width: 3rem;
-    height: 3rem;
+    min-width: 3rem;
+    min-height: 3rem;
     background-color: #E50914;
     cursor: pointer;
     border-radius: 50%;
@@ -229,7 +229,7 @@
     }
     
     .submenu{
-        display: none;
+        display: block;
         position: absolute;
         background-color: var(--accent-color);
         width: 20rem;
@@ -237,9 +237,9 @@
         top: 14vh;
         border-radius: 1rem;
         left: 50%;
-        transform: translateX(-50%) scale(0.8);
+        transform: translateX(-50%) scale(0);
+
         opacity: 0;
-      
     }
     .submenu::before{
         content: "";
@@ -247,7 +247,6 @@
         top:-1rem;
         left: 50%;
         transform: translateX(-50%);
-        
         width: 0;
         height: 0;
         border-left: 0.7rem solid transparent;
@@ -255,34 +254,16 @@
         border-bottom: 1rem solid var(--accent-color);
     }
     .submenu li{
-        transition: 0.5s all ease-in-out;
+        
     }
     .menu__list li:hover .submenu{
         display: block;
-        animation: submenu forwards 0.5s ease-in-out;   
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+        transition: 0.4s all ease-in-out;
     }
-    .menu__list li:not(:hover) .submenu{
-        display: block;
-        animation: submenu2 forwards 0.5s ease-in-out;   
-    }
-    @keyframes submenu {
-        from{
-            opacity: 0;
-            transform: translateX(-50%) scale(0.8);
-        }
-        to{
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
-    }
-    @keyframes submenu2 {
-        from{
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-        }
-        to{
-            opacity: 0;
-            transform: translateX(-50%) scale(0.8);
-        }
-    }
+  
+  
+  
+
 }
