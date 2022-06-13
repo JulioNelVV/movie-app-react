@@ -1,9 +1,7 @@
 .movie-card{
-
-position: relative;
+    position: relative;
     display: flex;
     flex-flow: column nowrap;
-
 }
 .movie-card__image{
     width: 100%;

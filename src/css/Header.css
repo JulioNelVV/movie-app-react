@@ -1,12 +1,12 @@
 .header{
-    padding: 1rem;
+    position: fixed;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 15vh;
     width: 100%;
-    position: fixed;
-    top: 0;
+    height: 15vh;
+    padding: 1rem;
     z-index: 2;
     transition: all ease-in-out 0.4s;
 }

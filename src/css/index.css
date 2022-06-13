@@ -1,5 +1,6 @@
 :root{
     --accent-color: #E50914;
+    --body-background-color: #181818;
 }
 *,
 *::before,
@@ -14,7 +15,6 @@
 
 body{
     position: relative;
-    background-color: #181818;
-    
+    background-color: var(--body-background-color);
 }
 

@@ -1,9 +1,9 @@
 .logo{
-    width: 15rem;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     gap: 0.2rem;
+    width: 15rem;
 }
 .logo__img{
     display: block;
@@ -15,6 +15,6 @@
     display: block;
     flex-basis: 90%;
     flex-grow: 1;
-    font-size: 1.4rem;
     color:#FFF;
+    font-size: 1.4rem;
 }
