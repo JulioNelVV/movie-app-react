@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import MoviesGrid from "../components/MoviesGrid";
 import Slider from "../components/Slider";
 import '../../css/Home.css'
+import Spinner from "../components/Spinner";
 function Home({headerRef, movieDescriptionRef}){
     return(
         <div className="home">
@@ -14,7 +15,7 @@ function Home({headerRef, movieDescriptionRef}){
             />
             <MoviesGrid/>            
             <Footer/>
-           
+            <Spinner/>
         </div>
       
     )
