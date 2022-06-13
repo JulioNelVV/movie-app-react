@@ -1,30 +1,37 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import Home from "./js/views/Home";
 function MovieApp() {
-  useEffect(()=>{
-    const $header=document.querySelector(".header");
-    const $movieDescription=document.querySelector(".movie-description");
-  const changeHeaderBackground=(entries, observer)=>{
-    entries.forEach((entry)=>{
-      if(entry.isIntersecting){
-        $header.style.backgroundColor="transparent";
-      }else{
-        $header.style.backgroundColor="#000";
-      }
-      
-  })
+  const headerRef=useRef(null);
+  const movieDescriptionRef=useRef(null);
+  const changeHeaderBackground=(entries)=>{
+    const [entry]=entries;
+    if(entry.isIntersecting){
+      headerRef.current.style.backgroundColor="transparent";
+    }else{
+      headerRef.current.style.backgroundColor="#000";
+    }
   }
-  const observer=new IntersectionObserver(changeHeaderBackground,{
+  const IntersectionObserverOptions={
     root: null,
     rootMargin: '0px 0px 150px 0px',
-      threshold: 0.0
-  })
-  observer.observe($movieDescription)
-  
+    threshold: 0.0
+  }
+  useEffect(()=>{
+    
+  const observer=new IntersectionObserver(changeHeaderBackground,IntersectionObserverOptions)
+  observer.observe(movieDescriptionRef.current)
+  return ()=>{
+    if(headerRef.current) observer.unobserve(movieDescriptionRef.current)
+  }
   },[])
+
+
   return (
     <div>
-      <Home/>
+      <Home
+        headerRef={headerRef}
+        movieDescriptionRef={movieDescriptionRef}
+      />
     </div>
   );
 }

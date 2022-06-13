@@ -3,11 +3,15 @@ import Header from "../components/Header";
 import MoviesGrid from "../components/MoviesGrid";
 import Slider from "../components/Slider";
 import '../../css/Home.css'
-function Home(){
+function Home({headerRef, movieDescriptionRef}){
     return(
         <div className="home">
-            <Header/>
-            <Slider/>
+            <Header
+                headerRef={headerRef}
+            />
+            <Slider
+                movieDescriptionRef={movieDescriptionRef}
+            />
             <MoviesGrid/>            
             <Footer/>
            

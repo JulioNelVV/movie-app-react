@@ -1,5 +1,5 @@
 import '../../css/Slider.css'
-function Slider(){
+function Slider({movieDescriptionRef}){
     return(
         <div className="slider">
             <div
@@ -8,7 +8,7 @@ function Slider(){
             <button className='previous'></button>
             <div className='movie-info'>
                 <h2 className='movie-title'>Movie title</h2>
-                <p className='movie-description'>Movie Description</p>
+                <p  ref={movieDescriptionRef} className='movie-description'>Movie Description</p>
             </div>
             <button className='next'></button>
            <div className='slider__pointers'>
