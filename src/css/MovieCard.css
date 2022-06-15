@@ -2,12 +2,20 @@
     position: relative;
     display: flex;
     flex-flow: column nowrap;
+    border-radius: 1rem;
+    width: inherit;
+    transition: transform 0.2s linear;
+}
+.movie-card:hover{
+    transform: scale(1.1);
 }
 .movie-card__image{
     width: 100%;
     height: auto;
     object-fit: cover;
     object-position: center;
+    display: block;
+    border-radius: 1rem;
 }
 .movie-card__title{
     font-size: 1rem;

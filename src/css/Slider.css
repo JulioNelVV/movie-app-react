@@ -45,7 +45,7 @@ button{
     
 }
 .movie-title{
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 .movie-description{
@@ -115,5 +115,8 @@ p{
 @media all and (min-width:760px){
     .movie-info{
         font-size: 1.7rem;
+    }
+    .movie-title{
+        font-size: 2.5rem;
     }
 }

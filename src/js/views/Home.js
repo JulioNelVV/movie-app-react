@@ -16,11 +16,11 @@ function Home({headerRef, movieDescriptionRef, moviesList, genresList, isLoading
                 moviesList={moviesList}
                 isLoading={isLoading}
                 delay={3000}
-                length={7}
+                length={5}
                 controls={true}
                 indicators={true}
                 info={true}
-                indicatorShape="slim"
+                indicatorShape="circle"
             />
             
             <MoviesGrid

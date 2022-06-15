@@ -20,7 +20,7 @@ function Menu({genresList}){
                     <form className='search-form'>
                         <input type="text"
                             className='search-form__text'
-                            placeholder='Search movie...'
+                            placeholder='search movie...'
                         />
                         <input type="button" className='search-form__button'/>
                     </form>
