@@ -216,8 +216,10 @@
         position: absolute;
         top: 14vh;
         left: 50%;
-        display: block;
-        width: 20rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(7, auto);
+        width: 40rem;
         padding: 0.5rem;
         background-color: var(--accent-color);
         border-radius: 1rem;
@@ -237,7 +239,7 @@
         transform: translateX(-50%);
     }
     .menu__list li:hover .submenu{
-        display: block;
+        display: grid;
         transform: translateX(-50%) scale(1);
         transition: 0.4s all ease-in-out;
         opacity: 1;

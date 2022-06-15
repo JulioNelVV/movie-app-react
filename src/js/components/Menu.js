@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../../css/Menu.css'
-function Menu(){
+function Menu({genreList}){
     const [visible, setVisible]=useState(false);
     const onClickHandler=()=>{
         setVisible(!visible)
@@ -32,8 +32,12 @@ function Menu(){
                 <li>
                     <a href='#'>Categories</a>
                     <ul className='submenu'>
-                        <li>Category 1</li>
-                        <li>Category 2</li>
+                        {
+                            genreList.map((genre, index)=>{
+                                return <li key={genre.id}>{genre.name}</li>
+                            })
+                        }
+                        
                     </ul>
                 </li>
             </ul>

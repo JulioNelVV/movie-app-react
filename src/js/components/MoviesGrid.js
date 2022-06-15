@@ -1,27 +1,14 @@
 import MovieCard from "./MovieCard";
 
 import '../../css/MoviesGrid.css'
-function MoviesGrid(){
+function MoviesGrid({movieList}){
     return(
         <article className="movies-grid">
-            <MovieCard src="http://placeimg.com/640/480/any"/>
-            <MovieCard src="http://placeimg.com/640/480/animals"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            <MovieCard src="http://placeimg.com/640/480/any"/>
-            <MovieCard src="http://placeimg.com/640/480/animals"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            <MovieCard src="http://placeimg.com/640/480/any"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            <MovieCard src="http://placeimg.com/640/480/any"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            <MovieCard src="http://placeimg.com/640/480/any"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            <MovieCard src="http://placeimg.com/640/480/people"/>
-            
-           
-            
+            {
+                movieList.map((movie, index)=>{
+                    return <MovieCard key={index} title={movie.title} src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}/>
+                })
+            }
         </article>
     )
 }
