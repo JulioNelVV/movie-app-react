@@ -1,11 +1,11 @@
 import Logo from "./Logo";
 import Menu from "./Menu"
 import '../../css/Header.css'
-function Header({headerRef, genreList}){
+function Header({headerRef, genresList}){
     return(
         <header ref={headerRef} className="header">
             <Logo/>
-            <Menu genreList={genreList}/>
+            <Menu genresList={genresList}/>
         </header>
     )
 }

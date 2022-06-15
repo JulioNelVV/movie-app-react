@@ -1,11 +1,11 @@
 import MovieCard from "./MovieCard";
 
 import '../../css/MoviesGrid.css'
-function MoviesGrid({movieList}){
+function MoviesGrid({moviesList}){
     return(
         <article className="movies-grid">
             {
-                movieList.map((movie, index)=>{
+                moviesList.map((movie, index)=>{
                     return <MovieCard key={index} title={movie.title} src={`https://image.tmdb.org/t/p/w300/${movie.poster_path}`}/>
                 })
             }

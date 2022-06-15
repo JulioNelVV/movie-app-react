@@ -5,9 +5,12 @@ function MovieApp() {
   const movieDescriptionRef=useRef(null);
   const apiURL="https://api.themoviedb.org/3/discover/movie/?"
   const apiKey="api_key=583ad481a868c7cb43cca20c20a9d9c2";
-  const [movieList, setMovieList]=useState([])
-  const [genreList, setGenreList]=useState([]);
+  const [mode, setMode]=useState("category");
+  const [currentCategory, setCurrentCategory]=useState("All");
   const [isLoading, setIsLoading]=useState(true);
+  const [moviesList, setMoviesList]=useState([])
+  const [genresList, setGenresList]=useState([]);
+ 
   const changeHeaderBackground=(entries)=>{
     const [entry]=entries;
     if(entry.isIntersecting){
@@ -27,7 +30,7 @@ function MovieApp() {
       let data= await fetch(`${apiURL}${apiKey}`);
       let dataJSON= await data.json();
       if(!data.ok) throw "there's an error"
-      setMovieList(dataJSON.results)
+      setMoviesList(dataJSON.results)
       setIsLoading(false);
     }catch(e){
       console.log(e)
@@ -38,7 +41,7 @@ function MovieApp() {
       let data= await fetch("https://api.themoviedb.org/3/genre/movie/list?api_key=583ad481a868c7cb43cca20c20a9d9c2");
       let dataJSON= await data.json();
       if(!data.ok) throw "there's an error"
-      setGenreList(dataJSON.genres)
+      setGenresList(dataJSON.genres)
     }catch(e){
       console.log(e)
     }
@@ -53,7 +56,7 @@ function MovieApp() {
   return ()=>{
     if(headerRef.current) observer.unobserve(movieDescriptionRef.current)
   }
-  },[])
+  },[mode,currentCategory])
 
 
   return (
@@ -61,8 +64,8 @@ function MovieApp() {
       <Home
         headerRef={headerRef}
         movieDescriptionRef={movieDescriptionRef}
-        movieList={movieList}
-        genreList={genreList}
+        moviesList={moviesList}
+        genresList={genresList}
         isLoading={isLoading}
       />
       

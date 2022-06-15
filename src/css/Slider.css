@@ -34,16 +34,23 @@ button{
     z-index: 1;
 }
 .movie-info{
-    padding-left: 2rem;
-    flex-basis: 70%;
+    padding: 0.5rem;
+    flex-basis: 90%;
     color: #FFF;
     z-index: 1;
     text-align: justify;
     font-size: 1rem;
+    margin: auto;
+    flex-flow: column nowrap;
+    
 }
 .movie-title{
     font-size: 2.5rem;
     margin-bottom: 1rem;
+}
+.movie-description{
+    color: #9c9b9b;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .previous, .next{
     background-position: center;
@@ -57,24 +64,25 @@ button{
 .next{
     background-image: url("../assets/next.svg");
 }
-.slider__pointers{
+.slider__indicators{
     position: absolute;
     bottom: 1rem;
     left: 50%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    width: 5rem;
+    gap: 0.2rem;
     margin: auto;
     color: white;
     z-index: 1;
     transform: translateX(-50%);
+ 
 }
-.slider__pointer{
-    width: 1rem;
-    height: 1rem;
+.slider__indicator{
+    min-width: 1rem;
+    min-height: 1rem;
     border: 0.2rem solid #E50914;
-    border-radius: 50%;
+    
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
@@ -84,7 +92,23 @@ button{
 .--focus{
     background-color: #E50914;
 }
-
+.--show{
+    display: flex;
+}
+.--hide{
+    display: none;
+}
+.--circle{
+    border-radius: 50%;
+}
+.--square{
+    border-radius: none;
+}
+.--slim{
+    min-width: 3rem;
+    min-height: 0.6rem;
+    border: 0.2rem solid #E50914;
+}
 p{
     color: white;
 }

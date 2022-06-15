@@ -1,20 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import '../../css/Slider.css'
 
-function Slider({movieDescriptionRef, movieList, isLoading}){
+function Slider({movieDescriptionRef, moviesList, isLoading, delay,length, controls, indicators, info, indicatorShape}){
     const [position, setPosition]=useState(0);
     const backgroundRef=useRef(null);
-    let newMovieList=movieList.slice(0,4);
-    const setNextPosition=()=>{
-        if(position===newMovieList.length-1){
+    let SliderMovies=moviesList.slice(0,length);
+    const increasePosition=()=>{
+        if(position===SliderMovies.length-1){
             setPosition(0)
         }else{
             setPosition(position+1)
         }
     }
-    const setPreviousPosition=()=>{
+    const decreasePosition=()=>{
         if(position===0){
-            setPosition(3)
+            setPosition(SliderMovies.length-1)
         }else{
             setPosition(position-1)
         }
@@ -25,29 +25,31 @@ function Slider({movieDescriptionRef, movieList, isLoading}){
     useEffect(()=>{
         
         const interval=setInterval(()=>{
-            if(position===newMovieList.length-1){
+            if(position===SliderMovies.length-1){
                 setPosition(0)
             }else{
                 setPosition(position+1)
             }
             
-        },4000)
+        },delay)
         if(!isLoading){
-            backgroundRef.current.style.backgroundImage=`url('https://image.tmdb.org/t/p/original/${newMovieList[position].poster_path}')` 
+            backgroundRef.current.style.backgroundImage=`url('https://image.tmdb.org/t/p/original/${SliderMovies[position].poster_path}')` 
         }
         return ()=>clearInterval(interval);
     },[isLoading,position])
-    let sliderPointers;
+    let sliderIndicators, movieTitle, movieDescription;
     if(!isLoading){
-       sliderPointers=newMovieList.map((movie,index)=>{
+       sliderIndicators=SliderMovies.map((movie,index)=>{
             return(
                 <div
                     key={index}
                     onClick={()=>setCurrentPosition(index)}
-                    className={`slider__pointer ${position===index?"--focus":"--normal"}`}>
+                    className={`slider__indicator ${position===index?"--focus":"--normal"} --${indicatorShape}`}>
                 </div>
             )
         })
+        movieTitle=SliderMovies[position].title;
+        movieDescription=SliderMovies[position].overview;
     }
     return(
         <div className="slider">
@@ -56,24 +58,23 @@ function Slider({movieDescriptionRef, movieList, isLoading}){
                 className='slider__background'
             ></div>
             <button
-                className='previous'
-                onClick={setPreviousPosition}
+                className={`previous ${controls?"--show":"--hide"}`}
+                onClick={decreasePosition}
             >
 
             </button>
-            <div className='movie-info'>
-                <h2 className='movie-title'>{!isLoading?newMovieList[position].title:""}</h2>
-                <p  ref={movieDescriptionRef} className='movie-description'>{!isLoading?newMovieList[position].overview:""}</p>
+            <div className={`movie-info ${info?"--show":"--hide"}`}>
+                <h2 className='movie-title'>{movieTitle}</h2>
+                <p  ref={movieDescriptionRef} className='movie-description'>{movieDescription}</p>
             </div>
             <button 
-                className='next'
-                onClick={setNextPosition}
+                className={`next ${controls?"--show":"--hide"}`}
+                onClick={increasePosition}
             >
 
             </button>
-           <div className='slider__pointers'>
-               {sliderPointers}
-               
+           <div className={`slider__indicators ${indicators?"--show":"--hide"}`}>
+               {sliderIndicators}
             </div> 
         </div>
     )
