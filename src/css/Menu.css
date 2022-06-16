@@ -4,6 +4,7 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
+    
 }
 .menu__button{
     position: relative;
@@ -60,19 +61,20 @@
     right: 0;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 1rem;
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     padding: 1rem;
+    padding-top: 15vh;
     background-color: rgba(0,0,0,0.8);
-    font-size: 2rem;
+    font-size: 1.6rem;
     text-align: justify;
     color: #FFF;
     transform: translateX(-100%);
     transition: none;
- 
+    overflow-y: scroll;
 }
 .menu__list li{
     position: relative;
@@ -102,10 +104,16 @@
     top: 9vh;
     left: 50%;
     display: block;
-    width: 20rem;
+    width: 100%;
     padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+    gap: 0.2rem;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
     border-radius: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transform: translateX(-50%);
 }
 .submenu li{
@@ -141,8 +149,8 @@
     display:flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    width: 100%;
-    margin: auto;
+    width: 80%;
+   
     padding: 0.2rem 1.1rem;
     border: 2px solid #FFF;
     border-radius: 3rem;
@@ -151,12 +159,12 @@
     display: block;
     background-color: transparent;
     border: none;
-    font-size: 2rem;
+    font-size: 1.6rem;
     color: #FFF;
     outline: none;
 }
 .search-form__text{
-   width: 80%;
+   width: 85%;
 }
 .search-form__button{
     min-width: 2rem;
@@ -189,9 +197,12 @@
     .menu{
         flex-flow: row nowrap;
         flex-grow: 1;
+        justify-content: space-between;
+        align-items: center;
         width: calc(100%-17rem);
-        
+       
     }
+    
     .menu__button-wrapper{
         display: none;
     }
@@ -199,11 +210,14 @@
         position: static;
         flex-flow: row nowrap;
         justify-content: flex-start;
+        align-items: center;
         width: 100%;
         height: 15vh;
+        padding: 1rem;
         background-color: transparent;
         transform: translateX(0);
         transition: none;
+        overflow-y: visible;
     }
     .menu__list>li{
         display: flex;
@@ -232,33 +246,40 @@
     .submenu{
         position: absolute;
         top: 14vh;
-        left: 50%;
+        left: -15%;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(7, auto);
-        width: 40rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(11, auto);
+        align-items: center;
+        justify-items: center;
+        text-align: center;
+        min-width: 25rem;
+        height: auto;
         padding: 0.5rem;
         background-color: var(--accent-color);
         border-radius: 1rem;
-        font-size: 1.2rem;
-        transform: translateX(-50%) scale(0);
+        font-size: 1rem;
+        transform:  scale(0);
         opacity: 0;
+       
     }
+    
     .submenu::before{
         content: "";
         position: absolute;
         top:-1rem;
-        left: 50%;
+        left: 10%;
         width: 0;
         height: 0;
         border-left: 0.7rem solid transparent;
         border-right: 0.7rem solid transparent;
         border-bottom: 1rem solid var(--accent-color);
         transform: translateX(-50%);
+        
     }
     .menu__list li:hover .submenu{
         display: grid;
-        transform: translateX(-50%) scale(1);
+        transform:  scale(1);
         transition: 0.4s all ease-in-out;
         opacity: 1;
     }

@@ -6,9 +6,7 @@
     width: inherit;
     transition: transform 0.2s linear;
 }
-.movie-card:hover{
-    transform: scale(1.1);
-}
+
 .movie-card__image{
     width: 100%;
     height: auto;
@@ -25,4 +23,9 @@
 }
 .movie-card__image:hover{
     filter: brightness(0.5);
+}
+@media all and (min-width:768px){
+    .movie-card:hover{
+        transform: scale(1.1);
+    }
 }

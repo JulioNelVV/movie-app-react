@@ -4,7 +4,9 @@
     align-items: center;
     gap: 0.2rem;
     width: 15rem;
+    
 }
+
 .logo__img{
     display: block;
     flex-basis: 10%;
