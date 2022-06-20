@@ -20,7 +20,7 @@
     min-height: 2rem;
     background-color: var(--accent-color);
     border-radius: 50%;
-    background-image: url("../assets/phone.svg");
+    background-image: url("../../assets/images/phone.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50% 50%;

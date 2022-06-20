@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import Home from "./js/views/Home";
+import Header from "./components/Header";
+import Home from "./views/Home";
 function MovieApp() {
   const headerRef=useRef(null);
   const movieDescriptionRef=useRef(null);
-  const apiURL="https://api.themoviedb.org/3/discover/movie/?"
+  const apiURL="https://api.themoviedb.org/3/movie/popular?"
   const apiKey="api_key=583ad481a868c7cb43cca20c20a9d9c2";
-  const [mode, setMode]=useState("category");
-  const [currentCategory, setCurrentCategory]=useState("All");
   const [isLoading, setIsLoading]=useState(true);
   const [moviesList, setMoviesList]=useState([])
   const [genresList, setGenresList]=useState([]);
- 
+
   const changeHeaderBackground=(entries)=>{
     const [entry]=entries;
     if(entry.isIntersecting){
@@ -56,11 +55,15 @@ function MovieApp() {
   return ()=>{
     if(headerRef.current) observer.unobserve(movieDescriptionRef.current)
   }
-  },[mode,currentCategory])
+  },[])
 
 
   return (
     <div>
+      <Header
+                headerRef={headerRef}
+                genresList={genresList}
+            />
       <Home
         headerRef={headerRef}
         movieDescriptionRef={movieDescriptionRef}

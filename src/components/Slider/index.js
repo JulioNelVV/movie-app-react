@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import '../../css/Slider.css'
+import './style.css'
 
 function Slider({movieDescriptionRef, moviesList, isLoading, delay,length, controls, indicators, info, indicatorShape}){
     const [position, setPosition]=useState(0);

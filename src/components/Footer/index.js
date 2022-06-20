@@ -1,6 +1,6 @@
-import Logo from "./Logo";
+import Logo from "../Logo/";
 
-import '../../css/Footer.css'
+import './style.css'
 function Footer(){
     return(
         <footer className="footer">

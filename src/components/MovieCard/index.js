@@ -1,4 +1,4 @@
-import '../../css/MovieCard.css'
+import './style.css'
 function MovieCard({src, title}){
     return(
         <section className="movie-card">

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../../css/Menu.css'
+import './style.css'
 function Menu({genresList}){
     const [visible, setVisible]=useState(false);
     const onClickHandler=()=>{

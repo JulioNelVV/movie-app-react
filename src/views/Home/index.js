@@ -1,16 +1,13 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import MoviesGrid from "../components/MoviesGrid";
-import Slider from "../components/Slider";
-import '../../css/Home.css'
-import Spinner from "../components/Spinner";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import MoviesGrid from "../../components/MoviesGrid";
+import Slider from "../../components/Slider";
+import './style.css'
+import Spinner from "../../components/Spinner";
 function Home({headerRef, movieDescriptionRef, moviesList, genresList, isLoading}){
     return(
         <div className="home">
-            <Header
-                headerRef={headerRef}
-                genresList={genresList}
-            />
+            
             <Slider
                 movieDescriptionRef={movieDescriptionRef}
                 moviesList={moviesList}
