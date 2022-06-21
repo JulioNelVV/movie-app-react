@@ -5,7 +5,7 @@ function Header({headerRef, genresList}){
     return(
         <header ref={headerRef} className="header">
             <Logo/>
-            <Menu genresList={genresList}/>
+            <Menu/>
         </header>
     )
 }

@@ -4,25 +4,21 @@ import MoviesGrid from "../../components/MoviesGrid";
 import Slider from "../../components/Slider";
 import './style.css'
 import Spinner from "../../components/Spinner";
-function Home({headerRef, movieDescriptionRef, moviesList, genresList, isLoading}){
+function Home({movieDescriptionRef}){
     return(
         <div className="home">
             
             <Slider
                 movieDescriptionRef={movieDescriptionRef}
-                moviesList={moviesList}
-                isLoading={isLoading}
                 delay={3000}
-                length={5}
+                length={8}
                 controls={true}
                 indicators={true}
                 info={true}
                 indicatorShape="circle"
             />
             
-            <MoviesGrid
-                moviesList={moviesList}
-            />            
+            <MoviesGrid/>            
             <Footer/>
         </div>
       
