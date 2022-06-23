@@ -1,9 +1,10 @@
 .logo{
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
     align-items: center;
     gap: 0.2rem;
-    width: 15rem;
+    width: 12rem;
     
 }
 
@@ -19,4 +20,5 @@
     flex-grow: 1;
     color:#FFF;
     font-size: 1.8rem;
+    text-align: center;
 }

@@ -1,6 +1,6 @@
 .movies-grid{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr));
     grid-auto-flow: dense;
  
     justify-items: center;
@@ -10,4 +10,9 @@
     margin-top: 2rem;
     padding: 1rem;
     cursor: pointer;
+}
+@media all and (min-width:768px){
+    .movies-grid{
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    }
 }

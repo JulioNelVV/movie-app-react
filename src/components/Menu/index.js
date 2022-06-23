@@ -1,13 +1,35 @@
 import { useState } from 'react';
+import { Link } from 'wouter';
 import useFetch from '../../hooks/useFetch';
 import './style.css'
 function Menu({}){
     const [visible, setVisible]=useState(false);
-    const {data, isLoading}=useFetch("https://api.themoviedb.org/3/genre/movie/list?api_key=583ad481a868c7cb43cca20c20a9d9c2")
+    const {data, isLoading, error}=useFetch("https://api.themoviedb.org/3/genre/movie/list?api_key=583ad481a868c7cb43cca20c20a9d9c2");
+   
     const onClickHandler=()=>{
         setVisible(!visible)
     }
+   
+    let submenu;
     if(!isLoading){
+        
+        if(error!==null){
+            submenu=<li>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</li>
+        }else{
+            submenu= data.genres.map((genre, index)=>{
+                return(
+                    <li
+                        key={genre.id}
+                      
+                    >
+                        <Link  onClick={onClickHandler} to={`/category/${genre.id}`}>
+                            {genre.name}
+                        </Link>
+                        
+                    </li>
+                ) 
+            })
+        }
         return(
             <nav className='menu'>
                 <div 
@@ -30,15 +52,16 @@ function Menu({}){
                     </li>
                    
                     <li>
-                        <a href='#'>Home</a>
+                        <Link to='/'>
+                            <a href='/'>Home</a>
+                        </Link>
+                        
                     </li>
                     <li>
                         <a href='#'>Categories</a>
                         <ul className='submenu'>
                             {
-                                data.genres.map((genre, index)=>{
-                                    return <li key={genre.id}>{genre.name}</li>
-                                })
+                                submenu
                             }
                             
                         </ul>

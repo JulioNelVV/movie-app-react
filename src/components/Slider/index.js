@@ -4,13 +4,14 @@ import './style.css'
 function Slider({movieDescriptionRef, delay,length, controls, indicators, info, indicatorShape}){
     const [position, setPosition]=useState(0);
     const backgroundRef=useRef(null);
-    const {data, isLoading}=useFetch("https://api.themoviedb.org/3/movie/popular?api_key=583ad481a868c7cb43cca20c20a9d9c2");
-    let SliderMovies, increasePosition, decreasePosition;
     
+    const {data, isLoading, error}=useFetch("https://api.themoviedb.org/3/movie/popular?api_key=583ad481a868c7cb43cca20c20a9d9c2");
+    let SliderMovies, increasePosition, decreasePosition, setCurrentPosition;
+    let sliderIndicators, movieTitle, movieDescription;
+    let interval;
+   
     useEffect(()=>{
-        let interval;
-        
-        if(!isLoading){
+        if(!isLoading&&error===null){
             interval=setInterval(()=>{
                 if(position===SliderMovies.length-1){
                     setPosition(0)
@@ -23,38 +24,43 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
         }
         return ()=>clearInterval(interval);
     },[isLoading,position])
-    let sliderIndicators, movieTitle, movieDescription;
-    if(!isLoading){
+   
+    if(!isLoading&&error===null){
         SliderMovies=data.results.slice(0,length);
     
-     increasePosition=()=>{
-        if(position===SliderMovies.length-1){
-            setPosition(0)
-        }else{
-            setPosition(position+1)
+        increasePosition=()=>{
+            if(position===SliderMovies.length-1){
+                setPosition(0)
+            }else{
+                setPosition(position+1)
+            }
+        }   
+        decreasePosition=()=>{
+                if(position===0){
+                    setPosition(SliderMovies.length-1)
+                }else{
+                    setPosition(position-1)
+                }
+            }
+        setCurrentPosition=(index)=>{
+            setPosition(index)
         }
-    }
-   decreasePosition=()=>{
-        if(position===0){
-            setPosition(SliderMovies.length-1)
-        }else{
-            setPosition(position-1)
-        }
-    }
-    const setCurrentPosition=(index)=>{
-        setPosition(index)
-    }
-       sliderIndicators=SliderMovies.map((movie,index)=>{
-            return(
-                <div
-                    key={index}
-                    onClick={()=>setCurrentPosition(index)}
-                    className={`slider__indicator ${position===index?"--focus":"--normal"} --${indicatorShape}`}>
-                </div>
-            )
-        })
+        sliderIndicators=SliderMovies.map((movie,index)=>{
+                return(
+                    <div
+                        key={index}
+                        onClick={()=>setCurrentPosition(index)}
+                        className={`slider__indicator ${position===index?"--focus":"--normal"} --${indicatorShape}`}>
+                    </div>
+                )
+            })
         movieTitle=SliderMovies[position].title;
         movieDescription=SliderMovies[position].overview;
+    }
+    if(error){
+        return(
+            <p style={{color: 'white', zIndex: '9999'}}>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
+        )
     }
     return(
         <div className="slider">

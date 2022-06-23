@@ -1,5 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { Router } from "wouter";
+import { Route, Switch } from "wouter";
 import Header from "./components/Header";
+import Slider from "./components/Slider";
+import Spinner from "./components/Spinner";
+import useHashLocation from "./hooks/useHashLocation";
+import Category from "./views/Category";
 
 import Home from "./views/Home";
 
@@ -26,19 +32,33 @@ function MovieApp() {
   observer.observe(movieDescriptionRef.current)
   return ()=>{
     if(headerRef.current) observer.unobserve(movieDescriptionRef.current)
+    
   }
   },[])
 
 
   return (
     <div>
-      <Header
-                headerRef={headerRef}
-            />
-      <Home
-        headerRef={headerRef}
-        movieDescriptionRef={movieDescriptionRef}
-      />
+      <Router hook={useHashLocation}>
+        <Header
+          headerRef={headerRef}
+        />
+        <Slider
+          movieDescriptionRef={movieDescriptionRef}
+          delay={3000}
+          length={4}
+          controls={true}
+          indicators={true}
+          info={true}
+          indicatorShape="slim"
+        />
+      
+        <Switch>
+          <Route path="/" component={Home}/>
+          <Route path="/category/:category_id" component={Category}>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }

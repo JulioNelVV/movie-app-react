@@ -11,10 +11,12 @@
     font-family: 'Montserrat', sans-serif;
     list-style: none;
     text-decoration: none;
+    scroll-margin-top: 15vh;
 }
 
 body{
     position: relative;
     background-color: var(--body-background-color);
+  
 }
 
