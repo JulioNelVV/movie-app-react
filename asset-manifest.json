@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/movie-app-react/static/css/main.4d6fa818.css",
-    "main.js": "/movie-app-react/static/js/main.57ccfc76.js",
+    "main.css": "/movie-app-react/static/css/main.617dc25f.css",
+    "main.js": "/movie-app-react/static/js/main.af80a199.js",
     "index.html": "/movie-app-react/index.html",
     "static/media/phone.svg": "/movie-app-react/static/media/phone.677bf7454942a53f6677.svg",
     "static/media/search.svg": "/movie-app-react/static/media/search.65dd800db880c686a8d0.svg",
     "static/media/logo.svg": "/movie-app-react/static/media/logo.8826b5031629bf897a3f1c5989968af2.svg",
     "static/media/previous.svg": "/movie-app-react/static/media/previous.9419b46cfa161e0b8397.svg",
     "static/media/next.svg": "/movie-app-react/static/media/next.8c8d5949de20c9e3d653.svg",
-    "main.4d6fa818.css.map": "/movie-app-react/static/css/main.4d6fa818.css.map",
-    "main.57ccfc76.js.map": "/movie-app-react/static/js/main.57ccfc76.js.map"
+    "main.617dc25f.css.map": "/movie-app-react/static/css/main.617dc25f.css.map",
+    "main.af80a199.js.map": "/movie-app-react/static/js/main.af80a199.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d6fa818.css",
-    "static/js/main.57ccfc76.js"
+    "static/css/main.617dc25f.css",
+    "static/js/main.af80a199.js"
   ]
 }
