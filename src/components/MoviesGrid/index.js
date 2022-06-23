@@ -4,7 +4,13 @@ import Spinner  from "../Spinner";
 import './style.css'
 function MoviesGrid({params}){
     let hasParams=Object.keys(params).length>0;
-    const {data, isLoading, error}=useFetch(`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&&with_genres=${hasParams?params.category_id:""}`, null, params);
+    let url;
+    if(params.hasOwnProperty("movie")){
+        url=`https://api.themoviedb.org/3/search/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=1&query=${params.movie}`;
+    }else{
+        url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&&with_genres=${hasParams?params.category_id:""}`;
+    }
+    const {data, isLoading, error}=useFetch(url, null, params);
     if(!isLoading){
         if(error!==null){
             return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>

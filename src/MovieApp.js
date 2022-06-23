@@ -8,6 +8,7 @@ import useHashLocation from "./hooks/useHashLocation";
 import Category from "./views/Category";
 
 import Home from "./views/Home";
+import Search from "./views/Search";
 
 function MovieApp() {
   const headerRef=useRef(null);
@@ -55,8 +56,10 @@ function MovieApp() {
       
         <Switch>
           <Route path="/" component={Home}/>
-          <Route path="/category/:category_id" component={Category}>
-          </Route>
+          <Route path="/category/:category_id" component={Category}/>
+          <Route path="/search/:movie" component={Search}/>
+          
+          
         </Switch>
       </Router>
     </div>

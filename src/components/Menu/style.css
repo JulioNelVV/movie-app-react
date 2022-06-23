@@ -117,8 +117,15 @@
     transform: translateX(-50%);
 }
 .submenu li{
-    padding: 0.5rem;
+    
+    
+ 
+}
+.submenu li a{
     border-radius: 1rem;
+    padding: 0.5rem;
+    display: block;
+    width: 100%;
 }
 .submenu li:hover{
     border-radius: 1rem;

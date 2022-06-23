@@ -4,7 +4,6 @@ function Spinner(){
         <div>
             <h2 className='spinner-title'>Loading...</h2>
             <div className="spinner"></div>
-            
         </div>
             
             

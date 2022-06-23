@@ -1,13 +1,23 @@
 import { useState } from 'react';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 import useFetch from '../../hooks/useFetch';
 import './style.css'
 function Menu({}){
     const [visible, setVisible]=useState(false);
+    const [movie, setMovie]=useState("");
+    const [location, setLocation]=useLocation();
     const {data, isLoading, error}=useFetch("https://api.themoviedb.org/3/genre/movie/list?api_key=583ad481a868c7cb43cca20c20a9d9c2");
    
     const onClickHandler=()=>{
         setVisible(!visible)
+    }
+    const onChangeHanlder=(e)=>{
+        setMovie(e.target.value)
+    }
+    const onSubmitHandler=(e)=>{
+        e.preventDefault();
+        setLocation(`/search/${movie}`);
+        setMovie("");
     }
    
     let submenu;
@@ -42,10 +52,12 @@ function Menu({}){
               
                 <ul className={`menu__list --${visible?"visible":"hidden"}`}>
                     <li>
-                        <form className='search-form'>
+                        <form className='search-form' onSubmit={onSubmitHandler}>
                             <input type="text"
                                 className='search-form__text'
                                 placeholder='search movie...'
+                                onChange={onChangeHanlder}
+                                value={movie}
                             />
                             <input type="button" className='search-form__button'/>
                         </form>
