@@ -51,7 +51,7 @@ function MovieApp() {
           controls={true}
           indicators={true}
           info={true}
-          indicatorShape="slim"
+          indicatorShape="circle"
         />
       
         <Switch>

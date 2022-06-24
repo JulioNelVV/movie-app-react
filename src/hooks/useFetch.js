@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 
-const useFetch=(url, options, params)=>{
+const useFetch=(url, options, params, page)=>{
     const [data, setData]=useState(null);
     const [isLoading, setIsLoading]=useState(true);
     const [error, setError]=useState(null);
@@ -23,7 +23,7 @@ const useFetch=(url, options, params)=>{
     useEffect(()=>{
        
         getData();
-    },[params])
+    },[params, page])
 
     return{
         data,
