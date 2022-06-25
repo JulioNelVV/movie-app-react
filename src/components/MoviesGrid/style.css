@@ -20,6 +20,7 @@
 }
 .pages *{
     font-size: 1.3rem;
+    transition: all 0.2s ease-in-out;
 }
 .pages input{
     min-width: 3rem;
@@ -27,7 +28,7 @@
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    
+    background-color: var(--accent-color);
     color: #FFF;
     text-align: center;
     
@@ -61,7 +62,7 @@
     background-color: transparent;
 }
 .pages-previous:hover, .pages-next:hover{
-    background-color: var(--accent-color);
+    background-color: var(--accent-color-dark);
 }
 .pages-previous{
     background-image: url("../../assets/images/previous-white.svg");
