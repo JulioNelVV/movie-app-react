@@ -52,6 +52,9 @@ button{
 .movie-description{
     color: #9c9b9b;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    max-height: 4.4rem;
+    text-overflow: ellipsis;
+    overflow-y: hidden;
 }
 .previous, .next{
     background-position: center;

@@ -60,11 +60,12 @@ function MoviesGrid({params}){
                 <>
                 <article className="movies-grid">
                             {
-                                data.results.map(({id, title, poster_path})=>{
+                                data.results.map(({id, title, poster_path, release_date})=>{
                                     return <MovieCard
                                                 key={id}
                                                 title={title}
                                                 src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                                                releaseDate={release_date}
                                             />
                                 })
                             }
