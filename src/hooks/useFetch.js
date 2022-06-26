@@ -23,7 +23,7 @@ const useFetch=(url, options, params, page)=>{
     useEffect(()=>{
        
         getData();
-    },[params, page])
+    },[params, page, url])
 
     return{
         data,

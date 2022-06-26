@@ -17,7 +17,7 @@ function Menu({}){
     }
     const onSubmitHandler=(e)=>{
         e.preventDefault();
-        setLocation(`/search/${movie}`);
+        setLocation(`/search/${movie}/1`);
         setMovie("");
     }
     useEffect(()=>{
@@ -48,7 +48,7 @@ function Menu({}){
                         key={genre.id}
                       
                     >
-                        <Link  onClick={onClickHandler} to={`/category/${genre.id}`}>
+                        <Link  onClick={onClickHandler} to={`/category/${genre.id}/${1}`}>
                             {genre.name}
                         </Link>
                         
@@ -80,13 +80,13 @@ function Menu({}){
                     </li>
                    
                     <li>
-                        <Link to='/'>
+                        <Link to='/1'>
                             <a href='/'>Home</a>
                         </Link>
                         
                     </li>
                     <li>
-                        <a href='#'>Categories</a>
+                        <a>Categories</a>
                         <ul className='submenu'>
                             {
                                 submenu

@@ -3,12 +3,13 @@ import useFetch from "../../hooks/useFetch";
 import Spinner  from "../Spinner";
 import './style.css'
 import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
 function MoviesGrid({params}){
     let hasParams=Object.keys(params).length>0;
     let url;
    
     const [page, setPage]=useState(1);
-    
+    const [location, setLocation]=useLocation();
     const nextPage=()=>{
         if(page>=500){
             setPage(500);
@@ -21,6 +22,7 @@ function MoviesGrid({params}){
             }
             
         }
+      
         
     }
     const previousPage=()=>{
@@ -40,17 +42,42 @@ function MoviesGrid({params}){
             
         }
     }
-    if(params.hasOwnProperty("movie")){
-        url=`https://api.themoviedb.org/3/search/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${page}&query=${params.movie}`;
+    if(hasParams){
+        if(params.hasOwnProperty("movie")){
+            url=`https://api.themoviedb.org/3/search/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}&query=${params.movie}`;
+        }else{
+            if(params.hasOwnProperty("category_id")){
+                url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}&with_genres=${hasParams?params.category_id:""}`;
+            }else{
+                url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}`;
+                
+            }
+           
+        }
     }else{
-        url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${page}&with_genres=${hasParams?params.category_id:""}`;
+        url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${page}}`;
+        
     }
+    
     const {data, isLoading, error}=useFetch(url, null, params, page);
     useEffect(()=>{
-        window.addEventListener("hashchange",()=>{
-            setPage(1);
-        })
-    },[params])
+        if(hasParams){
+            if(params.hasOwnProperty("movie")){
+                setLocation(`/search/${params.movie}/${page}`);
+            }
+            else{
+                if(params.hasOwnProperty("category_id")){
+                    setLocation(`/category/${params.category_id}/${page}`);
+                }else{
+                    setLocation(`/${page}`);
+                }
+                
+            }
+           }else{
+            setLocation(`/${page}`);
+           }
+        
+    },[page])
     if(!isLoading){
         if(error!==null){
             return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
@@ -74,7 +101,7 @@ function MoviesGrid({params}){
                 <article className="pages">
                     <input className={`pages-previous ${page===1?"--hidden":"visible"}`} type="button" onClick={previousPage} value=" "/>
                     <div className="pages-indicators">
-                        <input className="pages-indicator" type="button" onClick={()=>setPage(page)} value={page}/>
+                        <input className="pages-indicator" type="button" onClick={()=>setPage(page)} value={params.page||1}/>
                         <p>of</p>
                         <input className="pages-indicator" type="button" onClick={lastPage} value={data.total_pages>=500?"500":data.total_pages}/>
                     </div>

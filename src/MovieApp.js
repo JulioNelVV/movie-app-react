@@ -56,8 +56,9 @@ function MovieApp() {
       
         <Switch>
           <Route path="/" component={Home}/>
-          <Route path="/category/:category_id" component={Category}/>
-          <Route path="/search/:movie" component={Search}/>
+          <Route path="/:page" component={Home}/>
+          <Route path="/category/:category_id/:page" component={Category}/>
+          <Route path="/search/:movie/:page" component={Search}/>
           
           
         </Switch>
