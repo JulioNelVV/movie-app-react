@@ -72,14 +72,14 @@ function MoviesGrid({params}){
                             
                 </article>
                 <article className="pages">
-                    <input className="pages-previous" type="button" onClick={previousPage} value=" "/>
+                    <input className={`pages-previous ${page===1?"--hidden":"visible"}`} type="button" onClick={previousPage} value=" "/>
                     <div className="pages-indicators">
                         <input className="pages-indicator" type="button" onClick={()=>setPage(page)} value={page}/>
                         <p>of</p>
                         <input className="pages-indicator" type="button" onClick={lastPage} value={data.total_pages>=500?"500":data.total_pages}/>
                     </div>
                     
-                    <input className="pages-next" type="button" onClick={nextPage} value=" "/>
+                    <input className={`pages-next ${page===(500||data.total_pages)?"--hidden":"visible"}`} type="button" onClick={nextPage} value=" "/>
                 </article>
                 
                 

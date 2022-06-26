@@ -9,7 +9,20 @@
     height: max-content;
     color: #FFF;
 }
-
+.movie-card__image-wrapper{
+    position: relative;
+   
+}
+.movie-card__release-year{
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: var(--accent-color);
+    border-radius: 1rem;
+    padding: 0.1rem 0.3rem;
+}
 .movie-card__image{
     width: 100%;
     object-fit:cover;

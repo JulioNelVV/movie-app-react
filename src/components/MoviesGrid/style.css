@@ -58,7 +58,7 @@
    
     background-repeat: no-repeat;
     
-    background-size: 80%;
+    background-size: 50% 50%;
     background-color: transparent;
 }
 .pages-previous:hover, .pages-next:hover{
@@ -66,11 +66,17 @@
 }
 .pages-previous{
     background-image: url("../../assets/images/previous-white.svg");
-    background-position:left;
+    background-position:center;
 }
 .pages-next{
     background-image: url("../../assets/images/next-white.svg");
-    background-position:right;
+    background-position:center;
+}
+.--visible{
+    visibility: visible;
+}
+.--hidden{
+    visibility: hidden;
 }
 @media all and (min-width:768px){
     .movies-grid{
