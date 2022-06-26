@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import useFetch from '../../hooks/useFetch';
 import './style.css'
-function Menu({}){
+function Menu({params}){
     const [visible, setVisible]=useState(false);
     const [movie, setMovie]=useState("");
     const [location, setLocation]=useLocation();

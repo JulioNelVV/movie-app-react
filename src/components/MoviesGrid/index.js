@@ -8,7 +8,7 @@ function MoviesGrid({params}){
     let hasParams=Object.keys(params).length>0;
     let url;
    
-    const [page, setPage]=useState(1);
+    const [page, setPage]=useState(Number(params.page)||1);
     const [location, setLocation]=useLocation();
     const nextPage=()=>{
         if(page>=500){
