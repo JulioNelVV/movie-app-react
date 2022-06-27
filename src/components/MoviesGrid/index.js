@@ -9,6 +9,7 @@ function MoviesGrid({params}){
     let url;
    
     const [page, setPage]=useState(Number(params.page)||1);
+ 
     const [location, setLocation]=useLocation();
     const nextPage=()=>{
         if(page>=500){
@@ -69,15 +70,19 @@ function MoviesGrid({params}){
                 if(params.hasOwnProperty("category_id")){
                     setLocation(`/category/${params.category_id}/${page}`);
                 }else{
-                    setLocation(`/${page}`);
+                    setLocation(`/home/${page}`);
                 }
                 
             }
            }else{
-            setLocation(`/${page}`);
+            setLocation(`/home/${page}`);
            }
-        
+           
     },[page])
+    useEffect(()=>{
+        setPage(Number(params.page));
+        
+    },[params.page])
     if(!isLoading){
         if(error!==null){
             return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>

@@ -80,8 +80,8 @@ function Menu({params}){
                     </li>
                    
                     <li>
-                        <Link to='/1'>
-                            <a href='/'>Home</a>
+                        <Link to='/home/1'>
+                            <a>Home</a>
                         </Link>
                         
                     </li>
