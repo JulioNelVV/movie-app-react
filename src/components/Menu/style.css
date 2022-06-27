@@ -138,6 +138,7 @@
 }
 .--hidden{
     animation: hidden 0.7s forwards;
+    transition: all 0.7s ease-in-out;
 }
 .--cross .menu__button{
    background-color: transparent;

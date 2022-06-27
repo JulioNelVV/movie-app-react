@@ -33,7 +33,7 @@ function Menu({params}){
                 menuList.current.classList.add("--hidden");
                 setTimeout(()=>{
                     menuList.current.classList.remove("--hidden");
-                    menuList.current.classList.remove("--visible");
+                   
                 },800)
             }
         }
