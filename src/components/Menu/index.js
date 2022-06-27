@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
+import CategoryContext from '../../context/CategoryContext';
 import useFetch from '../../hooks/useFetch';
 import './style.css'
 function Menu({params}){
@@ -7,10 +9,11 @@ function Menu({params}){
     const [movie, setMovie]=useState("");
     const [location, setLocation]=useLocation();
     const {data, isLoading, error}=useFetch("https://api.themoviedb.org/3/genre/movie/list?api_key=583ad481a868c7cb43cca20c20a9d9c2");
+    const {category, updateCategory}=useContext(CategoryContext);
     const menuList=useRef();
-    const onClickHandler=()=>{
-        
-        setVisible(!visible)
+    const onClickHandler=(genre)=>{
+        updateCategory({id: genre.id, name: genre.name});
+        setVisible(!visible);
     }
     const onChangeHanlder=(e)=>{
         setMovie(e.target.value)
@@ -48,7 +51,7 @@ function Menu({params}){
                         key={genre.id}
                       
                     >
-                        <Link  onClick={onClickHandler} to={`/category/${genre.id}/${1}`}>
+                        <Link  onClick={()=>onClickHandler(genre)} to={`/category/${genre.name}/${1}`}>
                             {genre.name}
                         </Link>
                         

@@ -8,11 +8,8 @@ function Category({...props}){
     const {params}=props;
     return(
         <div className="category">
-          
-            
             <MoviesGrid params={params}/>            
             <Footer/>
-            
         </div>
       
     )

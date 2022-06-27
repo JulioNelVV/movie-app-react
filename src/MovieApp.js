@@ -6,13 +6,13 @@ import Slider from "./components/Slider";
 import Spinner from "./components/Spinner";
 import useHashLocation from "./hooks/useHashLocation";
 import Category from "./views/Category";
-
 import Home from "./views/Home";
 import Search from "./views/Search";
-
+import CategoryContext from "./context/CategoryContext";
 function MovieApp() {
   const headerRef=useRef(null);
   const movieDescriptionRef=useRef(null);
+  const [category, setCategory]=useState({id: null, name: null});
   const changeHeaderBackground=(entries)=>{
     const [entry]=entries;
     if(entry.isIntersecting){
@@ -39,7 +39,7 @@ function MovieApp() {
 
 
   return (
-    <div>
+     <CategoryContext.Provider value={{category: category, updateCategory: setCategory}}>
       <Router hook={useHashLocation}>
         <Header
           headerRef={headerRef}
@@ -57,13 +57,13 @@ function MovieApp() {
         <Switch>
           <Route path="/" component={Home}/>
           <Route path="/home/:page" component={Home}/>
-          <Route path="/category/:category_id/:page" component={Category}/>
+          <Route path="/category/:category_name/:page" component={Category}/>
           <Route path="/search/:movie/:page" component={Search}/>
-          
-          
         </Switch>
       </Router>
-    </div>
+     </CategoryContext.Provider>
+      
+    
   );
 }
 
