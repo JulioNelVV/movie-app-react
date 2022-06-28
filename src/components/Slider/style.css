@@ -52,7 +52,8 @@ button{
 .movie-description{
     color: #9c9b9b;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    max-height: 4.4rem;
+    line-height: 1.7rem;
+    height: 5.3rem;
     text-overflow: ellipsis;
     overflow-y: hidden;
 }
@@ -116,11 +117,19 @@ button{
 p{
     color: white;
 }
-@media all and (min-width:760px){
+@media all and (min-width:768px){
     .movie-info{
         font-size: 1.7rem;
     }
     .movie-title{
         font-size: 2.5rem;
     }
+}
+@media all and (max-width: 480px){
+
+    .slider__background{
+    
+    background-size: 150% auto;
+   
+}
 }
