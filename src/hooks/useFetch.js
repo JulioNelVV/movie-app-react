@@ -24,12 +24,11 @@ const useFetch=(url, options, params, page)=>{
        
         getData();
     },[params, page, url])
-
+    
     return{
         data,
         isLoading,
         error
-
     }
 }
 export default useFetch;

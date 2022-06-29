@@ -92,11 +92,10 @@ function MoviesGrid({params}){
                                 data.results.map(({id, title, poster_path, release_date, overview, vote_average})=>{
                                     return <MovieCard
                                                 key={id}
+                                                id={id}
                                                 title={title}
                                                 src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
                                                 releaseDate={release_date}
-                                                overview={overview}
-                                                vote_average={vote_average}
                                             />
                                 })
                             }
@@ -112,6 +111,7 @@ function MoviesGrid({params}){
                     
                     <input className={`pages-next ${page===(500||data.total_pages)?"--hidden":"visible"}`} type="button" onClick={nextPage} value=" "/>
                 </article>
+               
                 </>
                 
             )

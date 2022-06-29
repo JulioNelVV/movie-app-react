@@ -14,7 +14,7 @@ function MovieApp() {
   const headerRef=useRef(null);
   const movieDescriptionRef=useRef(null);
   const [currentGenre, setCurrentGenre]=useState({id: null, name: null});
-  const [currentMovie, setCurrentMovie]=useState({});
+  const [currentMovie, setCurrentMovie]=useState({id: null, name: null});
   const [sliderDisplay, setSliderDisplay]=useState("flex");
   const changeHeaderBackground=(entries)=>{
     const [entry]=entries;
@@ -73,7 +73,7 @@ function MovieApp() {
             <Route path="/home/:page" component={Home}/>
             <Route path="/genre/:genre_name/:page" component={Genre}/>
             <Route path="/search/:movie/:page" component={Search}/>
-            <Route path="/detail/:movie_name" component={Detail}/>
+            <Route path="/detail/:movie_name/:movie_id" component={Detail}/>
           </Switch>
         </Router>
      </globalContext.Provider>

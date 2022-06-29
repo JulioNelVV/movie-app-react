@@ -66,7 +66,9 @@ function Menu({}){
             <nav className='menu'>
                 <div 
                     className={`menu__button-wrapper --${visible?"cross":"hamburguer"}`}
-                    onClick={onClickHandler}
+                    onClick={()=>{
+                        setVisible(!visible);
+                    }}
                 >
                     <button className="menu__button">
                     </button>
@@ -86,7 +88,11 @@ function Menu({}){
                     </li>
                    
                     <li>
-                        <Link onClick={()=>setSliderDisplay("flex")}to='/home/1'>
+                        <Link onClick={()=>{
+                            setSliderDisplay("flex")
+                            setVisible(!visible)
+                                }
+                            }to='/home/1'>
                             <a>Home</a>
                         </Link>
                         

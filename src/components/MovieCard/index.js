@@ -3,13 +3,15 @@ import { useLocation } from 'wouter';
 import globalContext from '../../context/globalContext';
 import './style.css'
 
-function MovieCard({src, title, releaseDate, overview, vote_average}){
+function MovieCard({src, id, title, releaseDate}){
     const [location, setLocation]=useLocation();
     const {currentMovie, setCurrentMovie, setSliderDisplay}=useContext(globalContext);
     const onClickHandler=()=>{
-        setLocation(`/detail/${title}`);
-        setCurrentMovie({src, title, releaseDate, overview, vote_average});
+        setCurrentMovie({id, title});
         setSliderDisplay("none");
+        setLocation(`/detail/${title}/${id}`);
+        
+        
     }   
     return(
         <section onClick={onClickHandler} className="movie-card">
