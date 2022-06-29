@@ -1,27 +1,25 @@
+import { useContext, useEffect } from "react";
+import { useRoute } from "wouter";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import MoviesGrid from "../../components/MoviesGrid";
 import Slider from "../../components/Slider";
-import './style.css'
-import Spinner from "../../components/Spinner";
-import { useContext, useState } from "react";
-import { useEffect } from "react";
 import globalContext from "../../context/globalContext";
+import './style.css'
 
-function Search({...props}){
+function Genre({...props}){
     const {params}=props;
     const {sliderDisplay, setSliderDisplay}=useContext(globalContext);
+    const [match, parameters]=useRoute("/detail/:movie_name");
     useEffect(()=>{
-        setSliderDisplay("none")
-    },[])
+        setSliderDisplay("flex")
+    },[params])
     return(
-        <div className="search">
+        <div className="genre">
             <MoviesGrid params={params}/>            
             <Footer/>
-            
         </div>
-
       
     )
 }
-export default Search;
+export default Genre;

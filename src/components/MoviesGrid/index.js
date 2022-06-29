@@ -4,14 +4,14 @@ import Spinner  from "../Spinner";
 import './style.css'
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import CategoryContext from "../../context/CategoryContext";
+import globalContext from "../../context/globalContext";
 function MoviesGrid({params}){
     let hasParams=Object.keys(params).length>0;
     let url;
    
     const [page, setPage]=useState(Number(params.page)||1);
     const [location, setLocation]=useLocation();
-    const {category, updateCategory}=useContext(CategoryContext);
+    const {currentGenre}=useContext(globalContext);
     
     const nextPage=()=>{
         if(page>=500){
@@ -22,11 +22,8 @@ function MoviesGrid({params}){
                 
             }else{
                 setPage(page + 1);
-            }
-            
+            }   
         }
-      
-        
     }
     const previousPage=()=>{
         if(page===1){
@@ -34,23 +31,20 @@ function MoviesGrid({params}){
         }else{
             setPage(page - 1)
         }
-        
     }
     const lastPage=()=>{
         if(data.total_pages>=500){
-            setPage(500)
-            
+            setPage(500)   
         }else{
             setPage(data.total_pages);
-            
         }
     }
     if(hasParams){
         if(params.hasOwnProperty("movie")){
             url=`https://api.themoviedb.org/3/search/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}&query=${params.movie}`;
         }else{
-            if(params.hasOwnProperty("category_name")){
-                url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}&with_genres=${hasParams?category.id:""}`;
+            if(params.hasOwnProperty("genre_name")){
+                url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}&with_genres=${hasParams?currentGenre.id:""}`;
             }else{
                 url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}`;
                 
@@ -69,8 +63,8 @@ function MoviesGrid({params}){
                 setLocation(`/search/${params.movie}/${page}`);
             }
             else{
-                if(params.hasOwnProperty("category_name")){
-                    setLocation(`/category/${params.category_name}/${page}`);
+                if(params.hasOwnProperty("genre_name")){
+                    setLocation(`/genre/${params.genre_name}/${page}`);
                 }else{
                     setLocation(`/home/${page}`);
                 }
@@ -95,12 +89,14 @@ function MoviesGrid({params}){
                 <>
                 <article className="movies-grid">
                             {
-                                data.results.map(({id, title, poster_path, release_date})=>{
+                                data.results.map(({id, title, poster_path, release_date, overview, vote_average})=>{
                                     return <MovieCard
                                                 key={id}
                                                 title={title}
                                                 src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
                                                 releaseDate={release_date}
+                                                overview={overview}
+                                                vote_average={vote_average}
                                             />
                                 })
                             }

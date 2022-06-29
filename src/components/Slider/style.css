@@ -1,5 +1,5 @@
 .slider{
-    margin: 0 !important;
+    margin: 0 ;
     position: relative;
     display: flex;
     flex-flow: row nowrap;
@@ -113,6 +113,12 @@ button{
     min-width: 3rem;
     min-height: 0.6rem;
     border: 0.2rem solid #E50914;
+}
+.--flex{
+    display: flex;
+}
+.--none{
+    display: none;
 }
 p{
     color: white;

@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import globalContext from '../../context/globalContext';
 import useFetch from '../../hooks/useFetch';
 import './style.css'
 function Slider({movieDescriptionRef, delay,length, controls, indicators, info, indicatorShape}){
     const [position, setPosition]=useState(0);
+    const {sliderDisplay, setSliderDisplay}=useContext(globalContext);
     const backgroundRef=useRef(null);
     
     const {data, isLoading, error}=useFetch("https://api.themoviedb.org/3/movie/popular?api_key=583ad481a868c7cb43cca20c20a9d9c2");
@@ -63,7 +65,7 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
         )
     }
     return(
-        <div className="slider">
+        <div className={`slider --${sliderDisplay}`}>
             <div
                 ref={backgroundRef}
                 className='slider__background'

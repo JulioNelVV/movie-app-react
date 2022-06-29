@@ -1,18 +1,19 @@
 import { useContext } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import CategoryContext from '../../context/CategoryContext';
+import globalContext from '../../context/globalContext';
 import useFetch from '../../hooks/useFetch';
 import './style.css'
-function Menu({params}){
+function Menu({}){
     const [visible, setVisible]=useState(false);
     const [movie, setMovie]=useState("");
     const [location, setLocation]=useLocation();
     const {data, isLoading, error}=useFetch("https://api.themoviedb.org/3/genre/movie/list?api_key=583ad481a868c7cb43cca20c20a9d9c2");
-    const {category, updateCategory}=useContext(CategoryContext);
+    const {setCurrentGenre, setSliderDisplay}=useContext(globalContext);
     const menuList=useRef();
     const onClickHandler=(genre)=>{
-        updateCategory({id: genre.id, name: genre.name});
+        setCurrentGenre({...genre});
+        setSliderDisplay("flex");
         setVisible(!visible);
     }
     const onChangeHanlder=(e)=>{
@@ -20,8 +21,10 @@ function Menu({params}){
     }
     const onSubmitHandler=(e)=>{
         e.preventDefault();
-        setLocation(`/search/${movie}/1`);
+        setLocation(`/search/${movie}/${1}`);
+        setSliderDisplay("none");
         setMovie("");
+        setVisible(!visible);
     }
     useEffect(()=>{
         if(!isLoading){
@@ -51,7 +54,7 @@ function Menu({params}){
                         key={genre.id}
                       
                     >
-                        <Link  onClick={()=>onClickHandler(genre)} to={`/category/${genre.name}/${1}`}>
+                        <Link  onClick={()=>onClickHandler(genre)} to={`/genre/${genre.name}/${1}`}>
                             {genre.name}
                         </Link>
                         
@@ -83,13 +86,13 @@ function Menu({params}){
                     </li>
                    
                     <li>
-                        <Link to='/home/1'>
+                        <Link onClick={()=>setSliderDisplay("flex")}to='/home/1'>
                             <a>Home</a>
                         </Link>
                         
                     </li>
                     <li>
-                        <a>Categories</a>
+                        <a>Genres</a>
                         <ul className='submenu'>
                             {
                                 submenu
