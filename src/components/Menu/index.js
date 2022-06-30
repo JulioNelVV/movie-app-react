@@ -29,13 +29,13 @@ function Menu({}){
     useEffect(()=>{
         if(!isLoading){
             if(visible){
-                menuList.current.classList.add("--visible");
-                menuList.current.classList.remove("--hidden");
+                menuList.current.classList.add("--show");
+                menuList.current.classList.remove("--hide");
             }else{
-                menuList.current.classList.remove("--visible");
-                menuList.current.classList.add("--hidden");
+                menuList.current.classList.remove("--show");
+                menuList.current.classList.add("--hide");
                 setTimeout(()=>{
-                    menuList.current.classList.remove("--hidden");
+                    menuList.current.classList.remove("--hide");
                    
                 },800)
             }

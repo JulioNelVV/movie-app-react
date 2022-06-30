@@ -71,22 +71,22 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
                 className='slider__background'
             ></div>
             <button
-                className={`previous ${controls?"--show":"--hide"}`}
+                className={`previous ${controls?"--flex":"--none"}`}
                 onClick={decreasePosition}
             >
 
             </button>
-            <div className={`movie-info ${info?"--show":"--hide"}`}>
+            <div className={`movie-info ${info?"--flex":"--none"}`}>
                 <h2 className='movie-title'>{movieTitle}</h2>
                 <p  ref={movieDescriptionRef} className='movie-description'>{movieDescription}</p>
             </div>
             <button 
-                className={`next ${controls?"--show":"--hide"}`}
+                className={`next ${controls?"--flex":"--none"}`}
                 onClick={increasePosition}
             >
 
             </button>
-           <div className={`slider__indicators ${indicators?"--show":"--hide"}`}>
+           <div className={`slider__indicators ${indicators?"--flex":"--none"}`}>
                {sliderIndicators}
             </div> 
         </div>

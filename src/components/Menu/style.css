@@ -133,10 +133,10 @@
     background-color: #aa070f;
 }
 /*Modifiers classes*/
-.--visible{
+.--show{
     animation: visible 0.7s forwards;
 }
-.--hidden{
+.--hide{
     animation: hidden 0.7s forwards;
     transition: all 0.7s ease-in-out;
 }
@@ -285,6 +285,7 @@
         transform: translateX(-50%);
         
     }
+   
     .menu__list li:hover .submenu{
         display: grid;
         transform:  scale(1);
@@ -294,5 +295,12 @@
     .search-form input{
      
         font-size: 1.6rem;
+    }
+    .--show{
+        animation: none;
+    }
+    .--hide{
+        animation: none;
+        transition: none;
     }
 }
