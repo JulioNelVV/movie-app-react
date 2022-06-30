@@ -3,16 +3,13 @@ import { Router } from "wouter";
 import { Route, Switch } from "wouter";
 import Header from "./components/Header";
 import Slider from "./components/Slider";
-import Spinner from "./components/Spinner";
 import useHashLocation from "./hooks/useHashLocation";
-import Genre from "./views/Genre";
-import Home from "./views/Home";
-import Search from "./views/Search";
 import globalContext from "./context/globalContext";
-import Detail from "./views/Detail";
+import DetailView from "./views/DetailView";
 
 import "./MovieApp.css"
 import Footer from "./components/Footer";
+import GeneralView from "./views/GeneralView";
 function MovieApp() {
   const headerRef=useRef(null);
   const movieDescriptionRef=useRef(null);
@@ -72,11 +69,11 @@ function MovieApp() {
           />
         
           <Switch>
-            <Route path="/" component={Home}/>
-            <Route path="/home/:page" component={Home}/>
-            <Route path="/genre/:genre_name/:page" component={Genre}/>
-            <Route path="/search/:movie/:page" component={Search}/>
-            <Route path="/detail/:movie_name/:movie_id" component={Detail}/>
+            <Route path="/" component={GeneralView}/>
+            <Route path="/home/:page" component={GeneralView}/>
+            <Route path="/genre/:genre_name/:page" component={GeneralView}/>
+            <Route path="/search/:movie/:page" component={GeneralView}/>
+            <Route path="/detail/:movie_name/:movie_id" component={DetailView}/>
           </Switch>
           <Footer/>
         </Router>

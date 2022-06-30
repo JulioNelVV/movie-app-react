@@ -1,19 +1,17 @@
 import { useContext, useEffect } from "react";
-import { useLocation, useRoute } from "wouter";
-import MovieCard from "../../components/MovieCard";
 import Spinner from "../../components/Spinner";
 import globalContext from "../../context/globalContext";
 import useFetch from "../../hooks/useFetch";
 
 import './style.css'
-function Detail({...props}){
+function DetailView({...props}){
     const {params}=props;
-    const {setSliderDisplay, currentMovie, setCurrentMovie}=useContext(globalContext);
-    const [location, setLocation]=useLocation();
+    const {setSliderDisplay}=useContext(globalContext);
+    
     const {data, isLoading, error}=useFetch(`https://api.themoviedb.org/3/movie/${params.movie_id}?api_key=583ad481a868c7cb43cca20c20a9d9c2`, null, params, 1);
     useEffect(()=>{
-        setSliderDisplay("none")
-    },[])
+        setSliderDisplay("none");
+    },[params])
     if(!isLoading){
         if(error!==null){
             return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
@@ -59,4 +57,4 @@ function Detail({...props}){
     }
     
 }
-export default Detail;
+export default DetailView;
