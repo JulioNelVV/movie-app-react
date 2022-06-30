@@ -16,7 +16,7 @@
     outline: none;
     
 }
-.menu__button-wrapper{
+.menu-button-wrapper{
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -29,7 +29,6 @@
     border-radius: 50%;
     cursor: pointer;
     z-index: 3;
-   
 }
 .menu__button::after{
     content: "";
@@ -53,7 +52,7 @@
     border-radius: 1rem;
     transition: transform 0.3s ease-in-out;
 }
-.menu__list{
+.menu-list{
     position: fixed;
     top: 0;
     left: 0;
@@ -76,16 +75,17 @@
     transition: none;
     overflow-y: scroll;
 }
-.menu__list li{
+.menu-list__item, .submenu__item{
     position: relative;
     width: 100%;
 }
-.menu__list a{    
+.menu-list__link{    
     position: relative;
     margin: auto;
     color: #FFF;
+    cursor: pointer;
 }
-.menu__list a::after{
+.menu-list__link::after{
     content: "";
     position: absolute;
     top: 2.5rem;
@@ -95,7 +95,7 @@
     background-color: #E50914;
     transition: width 0.5s ease-in-out;
 }
-.menu__list a:hover::after{
+.menu-list__link:hover::after{
     width: 100%;
 }
 
@@ -116,40 +116,37 @@
     font-size: 1.2rem;
     transform: translateX(-50%);
 }
-.submenu li{
-    
-    
- 
-}
-.submenu li a{
+
+.submenu__link{
     border-radius: 1rem;
     padding: 0.5rem;
     display: block;
     width: 100%;
+    color: #FFF;
 }
-.submenu li:hover{
+.submenu__item:hover{
     border-radius: 1rem;
     cursor: pointer;
-    background-color: #aa070f;
+    background-color: var(--accent-color-dark);
 }
 /*Modifiers classes*/
-.--show{
-    animation: visible 0.7s forwards;
+.menu-list--show{
+    animation: show 0.7s forwards;
 }
-.--hide{
-    animation: hidden 0.7s forwards;
+.menu-list--hide{
+    animation: hide 0.7s forwards;
     transition: all 0.7s ease-in-out;
 }
-.--cross .menu__button{
+.menu-button-wrapper--cross .menu__button{
    background-color: transparent;
 }
-.--cross .menu__button::after{
+.menu-button-wrapper--cross .menu__button::after{
     transform: translateY(-0.6rem) rotateZ(-45deg);
 }
-.--cross .menu__button::before{
+.menu-button-wrapper--cross .menu__button::before{
     transform: translateY(0.6rem) rotateZ(45deg);
 }
-.--hamburguer .menu__button{
+.menu-button-wrapper--hamburguer .menu__button{
     transition: all 0.3s ease-in-out;
 }
 /*Searching bar classes*/
@@ -163,11 +160,11 @@
     border: 2px solid #FFF;
     border-radius: 3rem;
 }
-.search-form input{
+.search-form__text,.search-form__button{
     display: block;
     background-color: transparent;
     border: none;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #FFF;
     outline: none;
 }
@@ -184,7 +181,7 @@
     cursor: pointer;
 }
 /*Aniamtions*/
-@keyframes hidden{
+@keyframes hide{
     from{
         transform: translateX(0);
     }
@@ -192,7 +189,7 @@
         transform: translateX(-100);
     }
 }
-@keyframes visible{
+@keyframes show{
     from{
         transform: translateX(-100);
     }
@@ -211,10 +208,11 @@
        
     }
     
-    .menu__button-wrapper{
+    .menu-button-wrapper{
         display: none;
     }
-    .menu__list{
+   
+    .menu-list{
         position: static;
         flex-flow: row nowrap;
         justify-content: flex-start;
@@ -227,7 +225,7 @@
         transition: none;
         overflow-y: visible;
     }
-    .menu__list>li{
+    .menu-list__item{
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
@@ -237,7 +235,7 @@
         font-size: 1.6rem;
         
     }
-    .menu__list a::after{
+    .menu-list__link::after{
         content: "";
         position: absolute;
         top: 2.2rem;
@@ -247,7 +245,7 @@
         background-color: #E50914;
         transition: width 0.5s ease-in-out;
     }
-    .menu__list li:first-child{
+    .menu-list__item:first-child{
        order: 1;
     }
     
@@ -257,7 +255,8 @@
         left: -15%;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(11, auto);
+        grid-template-rows: repeat(10, auto);
+        grid-auto-flow: column;
         align-items: center;
         justify-items: center;
         text-align: center;
@@ -286,20 +285,20 @@
         
     }
    
-    .menu__list li:hover .submenu{
+    .menu-list__item:hover .submenu{
         display: grid;
         transform:  scale(1);
         transition: 0.4s all ease-in-out;
         opacity: 1;
     }
-    .search-form input{
+    .search-form__text{
      
         font-size: 1.6rem;
     }
-    .--show{
+    .menu-list--show{
         animation: none;
     }
-    .--hide{
+    .menu-list--hide{
         animation: none;
         transition: none;
     }

@@ -27,14 +27,7 @@
     filter: brightness(0.4) blur(1px);
     transition: all 0.4s ease-in-out;
 }
-button{
-    width: 2.4rem;
-    height: 2.4rem;
-    border: none;
-    cursor: pointer;
-    filter: none;
-    z-index: 1;
-}
+
 .movie-info{
     padding: 0.5rem;
     flex-basis: 90%;
@@ -58,16 +51,22 @@ button{
     text-overflow: ellipsis;
     overflow-y: hidden;
 }
-.previous, .next{
+.previous-button, .next-button{
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-color: transparent;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: none;
+    cursor: pointer;
+    filter: none;
+    z-index: 1;
 }
-.previous{
+.previous-button{
     background-image: url("../../assets/images/previous.svg");
 }
-.next{
+.next-button{
     background-image: url("../../assets/images/next.svg");
 }
 .slider__indicators{
@@ -79,7 +78,6 @@ button{
     justify-content: space-between;
     gap: 0.2rem;
     margin: auto;
-    color: white;
     z-index: 1;
     transform: translateX(-50%);
  
@@ -88,42 +86,42 @@ button{
     min-width: 1rem;
     min-height: 1rem;
     border: 0.2rem solid #E50914;
-    
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
-.--normal{
+.slider__indicator--normal{
     background-color: transparent;
 }
-.--focus{
-    background-color: #E50914;
+.slider__indicator--focus{
+    background-color: var(--accent-color);
 }
-.--flex{
+.slider--flex
+.previous-button--flex,
+.next-button--flex,
+.slider__indicators--flex,
+.movie-info--flex{
     display: flex;
 }
-.--none{
+.slider--none,
+.previous-button--none,
+.next-button--none,
+.slider__indicators--none,
+.movie-info--none{
     display: none;
 }
-.--circle{
+.slider__indicator--circle{
     border-radius: 50%;
 }
-.--square{
+.slider__indicator--square{
     border-radius: none;
 }
-.--slim{
+.slider__indicator--slim{
     min-width: 3rem;
     min-height: 0.6rem;
     border: 0.2rem solid #E50914;
 }
-.--flex{
-    display: flex;
-}
-.--none{
-    display: none;
-}
-p{
-    color: white;
-}
+
+
 @media all and (min-width:768px){
     .movie-info{
         font-size: 1.7rem;
@@ -133,10 +131,7 @@ p{
     }
 }
 @media all and (max-width: 480px){
-
     .slider__background{
-    
     background-size: 150% auto;
-   
-}
+    }
 }

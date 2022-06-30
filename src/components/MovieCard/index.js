@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useLocation } from 'wouter';
 import globalContext from '../../context/globalContext';
-import './style.css'
+import style from './style.module.css'
 
 function MovieCard({src, id, title, releaseDate}){
     const [location, setLocation]=useLocation();
@@ -14,17 +14,17 @@ function MovieCard({src, id, title, releaseDate}){
         
     }   
     return(
-        <section onClick={onClickHandler} className="movie-card">
-            <div className='movie-card__image-wrapper'>
+        <section onClick={onClickHandler} className={style["movie-card"]}>
+            <div className={style['movie-card-image-wrapper']}>
                 <img
-                    className="movie-card__image"
+                    className={style["movie-card__image"]}
                     src={src}
                     alt="movie image"
                 />
-                 <p className='movie-card__release-year'>{releaseDate.slice(0,4)}</p>
+                 <p className={style['movie-card__release-year']}>{releaseDate.slice(0,4)}</p>
             </div>
             
-            <h2 className="movie-card__title">{title}</h2>
+            <h2 className={style["movie-card__title"]}>{title}</h2>
            
         </section>
     )

@@ -48,10 +48,11 @@
 .pages-indicator:hover{
     background-color: var(--accent-color-dark);
 }
-.pages p{
+.pages-text{
     text-align: center;
     height: fit-content;
-   
+    color: #FFF;
+    
 }
 
 .pages-previous, .pages-next{
@@ -72,10 +73,10 @@
     background-image: url("../../assets/images/next-white.svg");
     background-position:center;
 }
-.--visible{
+.pages-next--visible, .pages-previous--visible{
     visibility: visible;
 }
-.--hidden{
+.pages-next--hidden, .pages-previous--hidden{
     visibility: hidden;
 }
 @media all and (min-width:768px){

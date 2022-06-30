@@ -4,19 +4,18 @@ import Footer from "../../components/Footer";
 import MoviesGrid from "../../components/MoviesGrid";
 import globalContext from "../../context/globalContext";
 
-import './style.css'
+
 
 function Home({...props}){
     const {params}=props;
     const {sliderDisplay, setSliderDisplay}=useContext(globalContext);
-    const [match, parameters]=useRoute("/detail/:movie_name");
+   
     useEffect(()=>{
         setSliderDisplay("flex")
     },[params])
     return(
-        <div className="home">
+        <div className="view">
             <MoviesGrid params={params}/>            
-            <Footer/>
         </div>
 
       

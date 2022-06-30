@@ -10,6 +10,9 @@ import Home from "./views/Home";
 import Search from "./views/Search";
 import globalContext from "./context/globalContext";
 import Detail from "./views/Detail";
+
+import "./MovieApp.css"
+import Footer from "./components/Footer";
 function MovieApp() {
   const headerRef=useRef(null);
   const movieDescriptionRef=useRef(null);
@@ -75,6 +78,7 @@ function MovieApp() {
             <Route path="/search/:movie/:page" component={Search}/>
             <Route path="/detail/:movie_name/:movie_id" component={Detail}/>
           </Switch>
+          <Footer/>
         </Router>
      </globalContext.Provider>
       

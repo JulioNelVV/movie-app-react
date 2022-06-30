@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import globalContext from '../../context/globalContext';
 import useFetch from '../../hooks/useFetch';
-import './style.css'
+import style from './style.module.css'
 function Menu({}){
     const [visible, setVisible]=useState(false);
     const [movie, setMovie]=useState("");
@@ -29,14 +29,13 @@ function Menu({}){
     useEffect(()=>{
         if(!isLoading){
             if(visible){
-                menuList.current.classList.add("--show");
-                menuList.current.classList.remove("--hide");
+                menuList.current.classList.add(style["menu-list--show"]);
+                menuList.current.classList.remove(style["menu-list--hide"]);
             }else{
-                menuList.current.classList.remove("--show");
-                menuList.current.classList.add("--hide");
+                menuList.current.classList.remove(style["menu-list--show"]);
+                menuList.current.classList.add(style["menu-list--hide"]);
                 setTimeout(()=>{
-                    menuList.current.classList.remove("--hide");
-                   
+                    menuList.current.classList.remove(style["menu-list--hide"]);
                 },800)
             }
         }
@@ -52,10 +51,10 @@ function Menu({}){
                 return(
                     <li
                         key={genre.id}
-                      
+                        className={style["submenu__item"]}
                     >
                         <Link  onClick={()=>onClickHandler(genre)} to={`/genre/${genre.name}/${1}`}>
-                            {genre.name}
+                            <a className={style['submenu__link']}>{genre.name}</a>
                         </Link>
                         
                     </li>
@@ -63,43 +62,43 @@ function Menu({}){
             })
         }
         return(
-            <nav className='menu'>
+            <nav className={style['menu']}>
                 <div 
-                    className={`menu__button-wrapper --${visible?"cross":"hamburguer"}`}
+                    className={`${style["menu-button-wrapper"]} ${style[`menu-button-wrapper--${visible?"cross":"hamburguer"}`]}`}
                     onClick={()=>{
                         setVisible(!visible);
                     }}
                 >
-                    <button className="menu__button">
+                    <button className={style["menu__button"]}>
                     </button>
                 </div>
               
-                <ul ref={menuList} className={`menu__list`}>
-                    <li>
-                        <form className='search-form' onSubmit={onSubmitHandler}>
+                <ul ref={menuList} className={style["menu-list"]}>
+                    <li className={style['menu-list__item']}>
+                        <form className={style['search-form']} onSubmit={onSubmitHandler}>
                             <input type="text"
-                                className='search-form__text'
+                                className={style['search-form__text']}
                                 placeholder='search movie...'
                                 onChange={onChangeHanlder}
                                 value={movie}
                             />
-                            <input type="button" className='search-form__button'/>
+                            <input type="button" className={style['search-form__button']}/>
                         </form>
                     </li>
                    
-                    <li>
+                    <li className={style['menu-list__item']}>
                         <Link onClick={()=>{
                             setSliderDisplay("flex")
                             setVisible(!visible)
                                 }
                             }to='/home/1'>
-                            <a>Home</a>
+                            <a className={style['menu-list__link']}>Home</a>
                         </Link>
                         
                     </li>
-                    <li>
-                        <a>Genres</a>
-                        <ul className='submenu'>
+                    <li className={style['menu-list__item']}>
+                        <a className={style['menu-list__link']}>Genres</a>
+                        <ul className={style['submenu']}>
                             {
                                 submenu
                             }

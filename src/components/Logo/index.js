@@ -1,14 +1,14 @@
 import logo from '../../assets/images/logo.svg'
-import './style.css'
+import style from './style.module.css'
 function Logo(){
     return(
-        <div className="logo">
+        <div className={style.logo}>
             <img 
-                className="logo__img" 
+                className={style.logo__img} 
                 src={logo}
                 alt="logo" 
             />
-            <span className="logo__title">Movie App</span>
+            <span className={style.logo__title}>Movie App</span>
         </div>
     )
 }

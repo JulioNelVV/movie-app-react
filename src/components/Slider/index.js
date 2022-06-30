@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import globalContext from '../../context/globalContext';
 import useFetch from '../../hooks/useFetch';
-import './style.css'
+import style from './style.module.css'
 function Slider({movieDescriptionRef, delay,length, controls, indicators, info, indicatorShape}){
     const [position, setPosition]=useState(0);
     const {sliderDisplay, setSliderDisplay}=useContext(globalContext);
@@ -52,7 +52,7 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
                     <div
                         key={index}
                         onClick={()=>setCurrentPosition(index)}
-                        className={`slider__indicator ${position===index?"--focus":"--normal"} --${indicatorShape}`}>
+                        className={`${style["slider__indicator"]} ${style[`slider__indicator--${position===index?"focus":"normal"}`]} ${style[`slider__indicator--${indicatorShape}`]}`}>
                     </div>
                 )
             })
@@ -65,28 +65,28 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
         )
     }
     return(
-        <div className={`slider --${sliderDisplay}`}>
+        <div className={`${style["slider"]} ${style[`slider--${sliderDisplay}`]}`}>
             <div
                 ref={backgroundRef}
-                className='slider__background'
+                className={style['slider__background']}
             ></div>
             <button
-                className={`previous ${controls?"--flex":"--none"}`}
+                className={`${style["previous-button"]} ${style[`previous-button--${controls?"flex":"none"}`]}`}
                 onClick={decreasePosition}
             >
 
             </button>
-            <div className={`movie-info ${info?"--flex":"--none"}`}>
-                <h2 className='movie-title'>{movieTitle}</h2>
-                <p  ref={movieDescriptionRef} className='movie-description'>{movieDescription}</p>
+            <div className={`${style["movie-info"]} ${style[`movie-info--${info?"flex":"none"}`]}`}>
+                <h2 className={style['movie-title']}>{movieTitle}</h2>
+                <p  ref={movieDescriptionRef} className={style['movie-description']}>{movieDescription}</p>
             </div>
             <button 
-                className={`next ${controls?"--flex":"--none"}`}
+                className={`${style["next-button"]} ${style[`next-button--${controls?"flex":"none"}`]}`}
                 onClick={increasePosition}
             >
 
             </button>
-           <div className={`slider__indicators ${indicators?"--flex":"--none"}`}>
+           <div className={`${style["slider__indicators"]} ${style[`slider__indicators--${indicators?"flex":"none"}`]}`}>
                {sliderIndicators}
             </div> 
         </div>

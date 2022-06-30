@@ -1,13 +1,14 @@
 .footer{
     padding: 1rem;
     background-color: #000;
-    height: 15vh;
+    min-height: 15vh;
     color: #FFF;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-flow: column nowrap;
+    align-self: flex-end;
 }
 .contact-info{
     display: flex;

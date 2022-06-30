@@ -1,10 +1,10 @@
 import MovieCard from "../MovieCard";
 import useFetch from "../../hooks/useFetch";
 import Spinner  from "../Spinner";
-import './style.css'
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import globalContext from "../../context/globalContext";
+import style from './style.module.css'
 function MoviesGrid({params}){
     let hasParams=Object.keys(params).length>0;
     let url;
@@ -87,9 +87,9 @@ function MoviesGrid({params}){
         else{
             return(
                 <>
-                <article className="movies-grid">
+                <article className={style["movies-grid"]}>
                             {
-                                data.results.map(({id, title, poster_path, release_date, overview, vote_average})=>{
+                                data.results.map(({id, title, poster_path, release_date})=>{
                                     return <MovieCard
                                                 key={id}
                                                 id={id}
@@ -101,15 +101,14 @@ function MoviesGrid({params}){
                             }
                             
                 </article>
-                <article className="pages">
-                    <input className={`pages-previous ${page===1?"--hidden":"visible"}`} type="button" onClick={previousPage} value=" "/>
-                    <div className="pages-indicators">
-                        <input className="pages-indicator" type="button" onClick={()=>setPage(page)} value={params.page||1}/>
-                        <p>of</p>
-                        <input className="pages-indicator" type="button" onClick={lastPage} value={data.total_pages>=500?"500":data.total_pages}/>
+                <article className={style["pages"]}>
+                    <input className={`${style["pages-previous"]} ${style[`pages-previous--${page===1?"hidden":"visible"}`]}`} type="button" onClick={previousPage} value=" "/>
+                    <div className={style["pages-indicators"]}>
+                        <input className={style["pages-indicator"]} type="button" onClick={()=>setPage(page)} value={params.page||1}/>
+                        <p className={style["pages-text"]}>of</p>
+                        <input className={style["pages-indicator"]} type="button" onClick={lastPage} value={data.total_pages>=500?"500":data.total_pages}/>
                     </div>
-                    
-                    <input className={`pages-next ${page===(500||data.total_pages)?"--hidden":"visible"}`} type="button" onClick={nextPage} value=" "/>
+                    <input className={`${style["pages-next"]} ${style[`pages-next--${page===(500||data.total_pages)?"hidden":"visible"}`]}`} type="button" onClick={nextPage} value=" "/>
                 </article>
                
                 </>
