@@ -1,25 +1,38 @@
 import MovieCard from "../MovieCard";
 import useFetch from "../../hooks/useFetch";
 import Spinner  from "../Spinner";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
-import globalContext from "../../context/globalContext";
 import style from './style.module.css'
 function MoviesGrid({params}){
-    let hasParams=Object.keys(params).length>0;
-    let url;
-   
+    let currentParam=Object.keys(params)[0];
     const [page, setPage]=useState(Number(params.page)||1);
     const [location, setLocation]=useLocation();
-    const {currentGenre}=useContext(globalContext);
-    
+    const PAGES_LIMIT=500;
+    const API_KEY="583ad481a868c7cb43cca20c20a9d9c2";
+    const DISCOVER_URL="https://api.themoviedb.org/3/discover/movie?api_key=";
+    const SEARCH_URL="https://api.themoviedb.org/3/search/movie?api_key=";
+    const DEFAULT_URL=`${DISCOVER_URL}${API_KEY}&page=${params.page}`;
+    const KEYWORD_LOCATION=`/search/${params.keyword}/${page}`;
+    const GENRE_LOCATION=`/genre/${params.genre_name}/${params.genre_id}/${page}`;
+    const DEFAULT_LOCATION=`/home/${page}`;
+    const fetchUrls={
+        "keyword": `${SEARCH_URL}${API_KEY}&page=${params.page}&query=${params.keyword}`,
+        "genre_name": `${DISCOVER_URL}${API_KEY}&page=${params.page}&with_genres=${params.genre_id}`
+    }
+    const locations={
+        "keyword": KEYWORD_LOCATION,
+        "genre_name": GENRE_LOCATION
+    }
+    let url;
+    url=fetchUrls[currentParam]|| DEFAULT_URL;
+
     const nextPage=()=>{
-        if(page>=500){
-            setPage(500);
+        if(page>=PAGES_LIMIT){
+            setPage(PAGES_LIMIT);
         }else{
             if(page>=data.total_pages){
                 setPage(data.total_pages);
-                
             }else{
                 setPage(page + 1);
             }   
@@ -33,51 +46,23 @@ function MoviesGrid({params}){
         }
     }
     const lastPage=()=>{
-        if(data.total_pages>=500){
-            setPage(500)   
+        if(data.total_pages>=PAGES_LIMIT){
+            setPage(PAGES_LIMIT)   
         }else{
             setPage(data.total_pages);
         }
     }
-    if(hasParams){
-        if(params.hasOwnProperty("movie")){
-            url=`https://api.themoviedb.org/3/search/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}&query=${params.movie}`;
-        }else{
-            if(params.hasOwnProperty("genre_name")){
-                url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}&with_genres=${hasParams?currentGenre.id:""}`;
-            }else{
-                url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${params.page}`;
-                
-            }
-           
-        }
-    }else{
-        url=`https://api.themoviedb.org/3/discover/movie?api_key=583ad481a868c7cb43cca20c20a9d9c2&page=${page}}`;
-        
-    }
-    
+  
+     
     const {data, isLoading, error}=useFetch(url, null, params, page);
+   
     useEffect(()=>{
-        if(hasParams){
-            if(params.hasOwnProperty("movie")){
-                setLocation(`/search/${params.movie}/${page}`);
-            }
-            else{
-                if(params.hasOwnProperty("genre_name")){
-                    setLocation(`/genre/${params.genre_name}/${page}`);
-                }else{
-                    setLocation(`/home/${page}`);
-                }
-                
-            }
-           }else{
-            setLocation(`/home/${page}`);
-           }
-           
+        
+        setLocation(locations[currentParam])||setLocation(DEFAULT_LOCATION);
+               
     },[page])
     useEffect(()=>{
         setPage(Number(params.page));
-        
     },[params.page])
 
     if(!isLoading){

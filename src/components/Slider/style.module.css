@@ -24,7 +24,7 @@
     background-position: center;
     background-attachment: fixed;
     object-fit: cover;
-    filter: brightness(0.4) blur(1px);
+    filter: brightness(0.4);
     transition: all 0.4s ease-in-out;
 }
 

@@ -60,7 +60,7 @@ const useMenu=()=>{
                         key={genre.id}
                         className={style["submenu__item"]}
                     >
-                        <Link  onClick={()=>onClickGenre(genre)} to={`/genre/${genre.name}/${1}`}>
+                        <Link  onClick={()=>onClickGenre(genre)} to={`/genre/${genre.name}/${genre.id}/${1}`}>
                             <a className={style['submenu__link']}>{genre.name}</a>
                         </Link>
                         

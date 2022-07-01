@@ -13,8 +13,6 @@ import GeneralView from "./views/GeneralView";
 function MovieApp() {
   const headerRef=useRef(null);
   const movieDescriptionRef=useRef(null);
-  const [currentGenre, setCurrentGenre]=useState({id: null, name: null});
-  const [currentMovie, setCurrentMovie]=useState({id: null, name: null});
   const [sliderDisplay, setSliderDisplay]=useState("flex");
   const changeHeaderBackground=(entries)=>{
     const [entry]=entries;
@@ -45,11 +43,7 @@ function MovieApp() {
       <globalContext.Provider
         value={
           {
-            currentGenre,
-            currentMovie,
             sliderDisplay,
-            setCurrentGenre,
-            setCurrentMovie,
             setSliderDisplay
           }
         }
@@ -71,8 +65,8 @@ function MovieApp() {
           <Switch>
             <Route path="/" component={GeneralView}/>
             <Route path="/home/:page" component={GeneralView}/>
-            <Route path="/genre/:genre_name/:page" component={GeneralView}/>
-            <Route path="/search/:movie/:page" component={GeneralView}/>
+            <Route path="/genre/:genre_name/:genre_id/:page" component={GeneralView}/>
+            <Route path="/search/:keyword/:page" component={GeneralView}/>
             <Route path="/detail/:movie_name/:movie_id" component={DetailView}/>
           </Switch>
           <Footer/>

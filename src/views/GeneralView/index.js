@@ -7,9 +7,8 @@ function GeneralView({...props}){
     const {setSliderDisplay}=useContext(globalContext);
     
     useEffect(()=>{
-        if(Object.keys(params)[0]==="movie"){
-            setSliderDisplay("none");
-        }else{
+        setSliderDisplay("none");
+        if(Object.keys(params)[0]!=="keyword"){
             setSliderDisplay("flex");
         }
     },[params])

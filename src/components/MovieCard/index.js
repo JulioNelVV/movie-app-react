@@ -5,13 +5,10 @@ import style from './style.module.css'
 
 function MovieCard({src, id, title, releaseDate}){
     const [location, setLocation]=useLocation();
-    const {currentMovie, setCurrentMovie, setSliderDisplay}=useContext(globalContext);
+    const {setCurrentMovie}=useContext(globalContext);
     const onClickHandler=()=>{
         setCurrentMovie({id, title});
-        setSliderDisplay("none");
         setLocation(`/detail/${title}/${id}`);
-        
-        
     }   
     return(
         <section onClick={onClickHandler} className={style["movie-card"]}>
@@ -23,9 +20,7 @@ function MovieCard({src, id, title, releaseDate}){
                 />
                  <p className={style['movie-card__release-year']}>{releaseDate.slice(0,4)}</p>
             </div>
-            
             <h2 className={style["movie-card__title"]}>{title}</h2>
-           
         </section>
     )
 }
