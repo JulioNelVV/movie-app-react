@@ -5,9 +5,7 @@ import style from './style.module.css'
 
 function MovieCard({src, id, title, releaseDate}){
     const [location, setLocation]=useLocation();
-    const {setCurrentMovie}=useContext(globalContext);
     const onClickHandler=()=>{
-        setCurrentMovie({id, title});
         setLocation(`/detail/${title}/${id}`);
     }   
     return(

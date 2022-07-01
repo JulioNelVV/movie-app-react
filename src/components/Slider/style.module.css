@@ -42,6 +42,12 @@
 .movie-title{
     font-size: 2rem;
     margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.movie-title:hover{
+    
+    color: var(--accent-color);
 }
 .movie-description{
     color: #9c9b9b;
