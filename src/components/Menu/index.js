@@ -11,7 +11,8 @@ function Menu(){
         menuList,
         inputSearch,
         movie,
-        setMenuListVisibility,
+        setVisible,
+        toggleVisible,
         onSubmitHandler,
         onChangeHandler,
     }=useMenu();
@@ -21,7 +22,7 @@ function Menu(){
             <nav className={style['menu']}>
                 <div 
                     className={`${style["menu-button-wrapper"]} ${style[`menu-button-wrapper--${visible?"cross":"hamburguer"}`]}`}
-                    onClick={setMenuListVisibility}
+                    onClick={toggleVisible}
                 >
                     <button className={style["menu__button"]}></button>
                 </div>
@@ -49,7 +50,7 @@ function Menu(){
                     </li> 
                     <li className={style['menu-list__item']}>
                         <Link
-                            onClick={setMenuListVisibility}
+                            onClick={()=>setVisible(false)}
                             to='/home/1'
                         >
                             <a className={style['menu-list__link']}>Home</a>

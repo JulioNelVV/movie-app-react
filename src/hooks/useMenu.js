@@ -18,12 +18,12 @@ const useMenu=()=>{
     const {data, isLoading, error}=useFetch(URL);
     const { setSliderDisplay}=useContext(globalContext);
     
-    const setMenuListVisibility=()=>{
+    const toggleVisible=()=>{
         setVisible(!visible);
     }
     const onClickGenre=()=>{
         setSliderDisplay("flex");
-        setMenuListVisibility();
+        setVisible(false);
     }
     const onChangeHandler=()=>{
         setMovie(inputSearch.current.value);
@@ -33,9 +33,19 @@ const useMenu=()=>{
         setLocation(`/search/${movie}/${1}`);
         setSliderDisplay("none");
         setMovie("");
-        setMenuListVisibility();
+        toggleVisible();
     }
-
+    useEffect(()=>{
+        window.addEventListener("resize",()=>{
+            if(!isLoading){
+                if((window.screen.width>768)){
+                    menuList.current.classList.remove(style["menu-list--show"]);
+                    setVisible(false)
+                }
+            }
+            
+        })
+    },[])
     useEffect(()=>{
         if(!isLoading&&visible){
             menuList.current.classList.add(style["menu-list--show"]);
@@ -49,8 +59,9 @@ const useMenu=()=>{
             },800)
         }
             
-        }
+    }
     ,[visible])
+  
     if(!isLoading&&error!==null){
         submenu=<li>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</li>
     }
@@ -78,7 +89,8 @@ const useMenu=()=>{
         menuList,
         inputSearch,
         movie,
-        setMenuListVisibility,
+        setVisible,
+        toggleVisible,
         onSubmitHandler,
         onChangeHandler,
     }
