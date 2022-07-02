@@ -7,9 +7,13 @@ import style from './style.module.css'
 
 function MovieCard({src, id, title, releaseDate, isLoading, error}){
     const [location, setLocation]=useLocation();
+    let year="20XX";
     const onClickHandler=()=>{
         setLocation(`/detail/${title}/${id}`);
     }   
+    if(releaseDate){
+        year=releaseDate.slice(0,4);
+    }
     if(!isLoading&&error===null){
         return(
         
@@ -20,7 +24,7 @@ function MovieCard({src, id, title, releaseDate, isLoading, error}){
                         src={src}
                         alt="movie image"
                     />
-                     <p className={style['movie-card__release-year']}>{releaseDate.slice(0,4)}</p>
+                     <p className={style['movie-card__release-year']}>{year}</p>
                 </div>
                 <h2 className={style["movie-card__title"]}>{title}</h2>
             </section>
