@@ -46,7 +46,6 @@
     transition: all 0.3s linear;
 }
 .movie-title:hover{
-    
     color: var(--accent-color);
 }
 .movie-description{

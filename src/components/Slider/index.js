@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import globalContext from '../../context/globalContext';
 import useFetch from '../../hooks/useFetch';
 import style from './style.module.css'
+import Spinner  from "../Spinner";
 function Slider({movieDescriptionRef, delay,length, controls, indicators, info, indicatorShape}){
     const [position, setPosition]=useState(0);
     const {sliderDisplay, setSliderDisplay}=useContext(globalContext);
@@ -16,12 +17,12 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
         setLocation(`/detail/${movieTitle}/${movieId}`);
     }
     const increasePosition=()=>{
-        if(position===(length-1)){
+        if(position===length-1){
             setPosition(0)
         }else{
             setPosition(position+1)
         }
-    }  
+    }
     const decreasePosition=()=>{
         if(position===0){
             setPosition(length-1)
@@ -30,21 +31,23 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
         }
     }
     useEffect(()=>{
+        
         if(!isLoading&&error===null){
             interval=setInterval(()=>{
                 increasePosition();
             },delay)
-            backgroundRef.current.style.backgroundImage=`url('https://image.tmdb.org/t/p/original/${SliderMovies[position].backdrop_path}')` 
+            let image=SliderMovies[position].poster_path;
+            backgroundRef.current.style.backgroundImage=`url('https://image.tmdb.org/t/p/original/${image}')` 
         }
         return ()=>clearInterval(interval);
-    },[isLoading,position])
+    },[isLoading,position, window.screen.width])
    
     if(!isLoading&&error===null){
         SliderMovies=data.results.slice(0,length);
         sliderIndicators=SliderMovies.map((movie,index)=>{
                 return(
                     <div
-                        key={index}
+                        key={movie.id}
                         onClick={()=>setPosition(index)}
                         className={`${style["slider__indicator"]} ${style[`slider__indicator--${position===index?"focus":"normal"}`]} ${style[`slider__indicator--${indicatorShape}`]}`}>
                     </div>
@@ -54,40 +57,44 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
         movieId=SliderMovies[position].id;
         movieDescription=SliderMovies[position].overview;
     }
-    if(error){
+    if(!isLoading&&error!==null){
         return(
             <p style={{color: 'white', zIndex: '9999'}}>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
         )
     }
-    return(
-        <div className={`${style["slider"]} ${style[`slider--${sliderDisplay}`]}`}>
-            <div
-                ref={backgroundRef}
-                className={style['slider__background']}
-            ></div>
-            <button
-                className={`${style["previous-button"]} ${style[`previous-button--${controls?"flex":"none"}`]}`}
-                onClick={decreasePosition}
-            >
-
-            </button>
-            <div className={`${style["movie-info"]} ${style[`movie-info--${info?"flex":"none"}`]}`}>
-                <h2
-                    className={style['movie-title']}
-                    onClick={onClickHandler}
-                >{movieTitle}</h2>
-                <p  ref={movieDescriptionRef} className={style['movie-description']}>{movieDescription}</p>
+    
+        return(
+            <div className={`${style["slider"]} ${style[`slider--${sliderDisplay}`]}`}>
+                <div
+                    ref={backgroundRef}
+                    className={style['slider__background']}
+                ></div>
+                <button
+                    className={`${style["previous-button"]} ${style[`previous-button--${controls?"flex":"none"}`]}`}
+                    onClick={decreasePosition}
+                >
+    
+                </button>
+                <div className={`${style["movie-info"]} ${style[`movie-info--${info?"flex":"none"}`]}`}>
+                    <h2
+                        className={style['movie-title']}
+                        onClick={onClickHandler}
+                    >{movieTitle}</h2>
+                    <p  ref={movieDescriptionRef} className={style['movie-description']}>{movieDescription}</p>
+                </div>
+                <button 
+                    className={`${style["next-button"]} ${style[`next-button--${controls?"flex":"none"}`]}`}
+                    onClick={increasePosition}
+                >
+    
+                </button>
+               <div className={`${style["slider__indicators"]} ${style[`slider__indicators--${indicators?"flex":"none"}`]}`}>
+                   {sliderIndicators}
+                </div> 
+               
             </div>
-            <button 
-                className={`${style["next-button"]} ${style[`next-button--${controls?"flex":"none"}`]}`}
-                onClick={increasePosition}
-            >
-
-            </button>
-           <div className={`${style["slider__indicators"]} ${style[`slider__indicators--${indicators?"flex":"none"}`]}`}>
-               {sliderIndicators}
-            </div> 
-        </div>
-    )
+        )
+    
+    
 }
 export default Slider;

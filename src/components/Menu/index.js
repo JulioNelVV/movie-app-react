@@ -9,6 +9,7 @@ function Menu(){
         submenu, 
         visible,
         menuList,
+        inputSearch,
         movie,
         setMenuListVisibility,
         onSubmitHandler,
@@ -37,6 +38,7 @@ function Menu(){
                                 className={style['search-form__text']}
                                 placeholder='search movie...'
                                 onChange={onChangeHandler}
+                                ref={inputSearch}
                                 value={movie}
                             />
                             <input 

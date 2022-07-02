@@ -26,7 +26,7 @@ function MoviesGrid({params}){
     }
     let url;
     url=fetchUrls[currentParam]|| DEFAULT_URL;
-
+    const {data, isLoading, error}=useFetch(url, null, params, page);
     const nextPage=()=>{
         if(page>=PAGES_LIMIT){
             setPage(PAGES_LIMIT);
@@ -54,54 +54,52 @@ function MoviesGrid({params}){
     }
   
      
-    const {data, isLoading, error}=useFetch(url, null, params, page);
+   
    
     useEffect(()=>{
-        
-        setLocation(locations[currentParam])||setLocation(DEFAULT_LOCATION);
-               
+        setLocation(locations[currentParam])||setLocation(DEFAULT_LOCATION);  
     },[page])
     useEffect(()=>{
         setPage(Number(params.page));
     },[params.page])
 
-    if(!isLoading){
-        if(error!==null){
-            return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
-        }
-        else{
-            return(
-                <>
-                <article className={style["movies-grid"]}>
-                            {
-                                data.results.map(({id, title, poster_path, release_date})=>{
-                                    return <MovieCard
-                                                key={id}
-                                                id={id}
-                                                title={title}
-                                                src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-                                                releaseDate={release_date}
-                                            />
-                                })
-                            }
-                            
-                </article>
-                <article className={style["pages"]}>
-                    <input className={`${style["pages-previous"]} ${style[`pages-previous--${page===1?"hidden":"visible"}`]}`} type="button" onClick={previousPage} value=" "/>
-                    <div className={style["pages-indicators"]}>
-                        <input className={style["pages-indicator"]} type="button" onClick={()=>setPage(page)} value={params.page||1}/>
-                        <p className={style["pages-text"]}>of</p>
-                        <input className={style["pages-indicator"]} type="button" onClick={lastPage} value={data.total_pages>=500?"500":data.total_pages}/>
-                    </div>
-                    <input className={`${style["pages-next"]} ${style[`pages-next--${page===(500||data.total_pages)?"hidden":"visible"}`]}`} type="button" onClick={nextPage} value=" "/>
-                </article>
-               
-                </>
-                
-            )
-        }
-        
+    if(!isLoading&&error!==null){
+        return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
     }
+    if(!isLoading&&error===null){
+        return(
+            <>
+            <article className={style["movies-grid"]}>
+                        {
+                            data.results.map(({id, title, poster_path, release_date})=>{
+                                return <MovieCard
+                                            key={id}
+                                            id={id}
+                                            title={title}
+                                            src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                                            releaseDate={release_date}
+                                            isLoading={isLoading}
+                                            error={error}
+                                        />
+                            })
+                        }
+                        
+            </article>
+            <article className={style["pages"]}>
+                <input className={`${style["pages-previous"]} ${style[`pages-previous--${page===1?"hidden":"visible"}`]}`} type="button" onClick={previousPage} value=" "/>
+                <div className={style["pages-indicators"]}>
+                    <input className={style["pages-indicator"]} type="button" onClick={()=>setPage(page)} value={params.page||1}/>
+                    <p className={style["pages-text"]}>of</p>
+                    <input className={style["pages-indicator"]} type="button" onClick={lastPage} value={data.total_pages>=500?"500":data.total_pages}/>
+                </div>
+                <input className={`${style["pages-next"]} ${style[`pages-next--${page===(500||data.total_pages)?"hidden":"visible"}`]}`} type="button" onClick={nextPage} value=" "/>
+            </article>
+           
+            </>
+            
+        )
+    }
+    
     return(
         <Spinner/>
     )
