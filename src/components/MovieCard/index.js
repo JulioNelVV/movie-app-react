@@ -1,40 +1,34 @@
-import { useContext } from 'react';
 import { useLocation } from 'wouter';
-import globalContext from '../../context/globalContext';
-import Spinner from '../Spinner';
-
 import style from './style.module.css'
 
-function MovieCard({src, id, title, releaseDate, isLoading, error}){
+function MovieCard({id, title, releaseDate, isLoading, error, poster_path}){
     const [location, setLocation]=useLocation();
-    let year="20XX";
+    let year="unknow";
     const onClickHandler=()=>{
         setLocation(`/detail/${title}/${id}`);
     }   
     if(releaseDate){
         year=releaseDate.slice(0,4);
     }
-    if(!isLoading&&error===null){
+    if(!isLoading&&error===null&&poster_path){
         return(
         
             <section onClick={onClickHandler} className={style["movie-card"]}>
                 <div className={style['movie-card-image-wrapper']}>
                     <img
                         className={style["movie-card__image"]}
-                        src={src}
+                        src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
                         alt="movie image"
                     />
                      <p className={style['movie-card__release-year']}>{year}</p>
                 </div>
                 <h2 className={style["movie-card__title"]}>{title}</h2>
             </section>
+          
         )
     }
     
-    return(
-        <Spinner/>
-    )
-
+    
     
 }
 export default MovieCard;

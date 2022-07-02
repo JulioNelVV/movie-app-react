@@ -5,3 +5,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.view--slider-flex{
+    margin-top:0;
+}
+.view--slider-none{
+    margin-top: 15vh;
+}

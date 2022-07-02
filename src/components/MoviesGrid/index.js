@@ -76,7 +76,7 @@ function MoviesGrid({params}){
                                             key={id}
                                             id={id}
                                             title={title}
-                                            src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                                            poster_path={poster_path}
                                             releaseDate={release_date}
                                             isLoading={isLoading}
                                             error={error}

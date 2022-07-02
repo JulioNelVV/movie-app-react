@@ -4,7 +4,7 @@ import globalContext from "../../context/globalContext";
 
 function GeneralView({...props}){
     const {params}=props;
-    const {setSliderDisplay}=useContext(globalContext);
+    const {sliderDisplay, setSliderDisplay}=useContext(globalContext);
     
     useEffect(()=>{
         setSliderDisplay("none");
@@ -13,7 +13,7 @@ function GeneralView({...props}){
         }
     },[params])
     return(
-        <div className="view">
+        <div className={`view view--slider-${sliderDisplay}`}>
             <MoviesGrid params={params}/>            
         </div>
 
