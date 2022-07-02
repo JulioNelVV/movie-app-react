@@ -9,7 +9,7 @@ function GeneralView({...props}){
     const defaultTitle="Most popular movies";
     const viewTitle={
         "keyword": `search results for ${params.keyword}`,
-        "genre_name": `${params.genre_name}`
+        "genre_name": `${params[currentParam].replace("%20"," ")}`
     }
     useEffect(()=>{
         setSliderDisplay("none");
@@ -19,8 +19,12 @@ function GeneralView({...props}){
     },[params])
     return(
         <div className={`view view--slider-${sliderDisplay}`}>
-            <h1>{viewTitle[currentParam]||defaultTitle}</h1>
-            <MoviesGrid params={params}/>            
+            
+            <MoviesGrid
+                params={params}
+                viewTitle={viewTitle}
+                defaultTitle={defaultTitle}
+            />
         </div>
 
       

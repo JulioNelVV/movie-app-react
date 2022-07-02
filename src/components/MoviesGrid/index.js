@@ -4,10 +4,11 @@ import Spinner  from "../Spinner";
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import style from './style.module.css'
-function MoviesGrid({params}){
+function MoviesGrid({params, viewTitle, defaultTitle}){
     let currentParam=Object.keys(params)[0];
     const [page, setPage]=useState(Number(params.page)||1);
     const [location, setLocation]=useLocation();
+    let resultsLength;
     const PAGES_LIMIT=500;
     const API_KEY="583ad481a868c7cb43cca20c20a9d9c2";
     const DISCOVER_URL="https://api.themoviedb.org/3/discover/movie?api_key=";
@@ -66,9 +67,10 @@ function MoviesGrid({params}){
     if(!isLoading&&error!==null){
         return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
     }
-    if(!isLoading&&error===null){
+    if(!isLoading&&error===null&&data.results.length!==0){
         return(
             <>
+            <h1>{viewTitle[currentParam]||defaultTitle}</h1>
             <article className={style["movies-grid"]}>
                         {
                             data.results.map(({id, title, poster_path, release_date})=>{
@@ -99,10 +101,17 @@ function MoviesGrid({params}){
             
         )
     }
+    if(!isLoading&&error===null&data.results.length===0){
+        return(
+            <h1>Not search results were found for {params.keyword}</h1>
+        )
+    }
+    if(isLoading){
+        return(
+            <Spinner/>
+        )
+    }
     
-    return(
-        <Spinner/>
-    )
    
     
 }
