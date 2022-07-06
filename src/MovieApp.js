@@ -7,73 +7,70 @@ import useHashLocation from "./hooks/useHashLocation";
 import globalContext from "./context/globalContext";
 import DetailView from "./views/DetailView";
 
-import "./MovieApp.css"
+import "./MovieApp.css";
 import Footer from "./components/Footer";
 import GeneralView from "./views/GeneralView";
 function MovieApp() {
-  const headerRef=useRef(null);
-  const movieDescriptionRef=useRef(null);
-  const [sliderDisplay, setSliderDisplay]=useState("flex");
-  const changeHeaderBackground=(entries)=>{
-    const [entry]=entries;
-    if(entry.isIntersecting){
-      headerRef.current.style.backgroundColor="transparent";
-    }else{
-      headerRef.current.style.backgroundColor="#000";
+  const headerRef = useRef(null);
+  const movieDescriptionRef = useRef(null);
+  const [sliderDisplay, setSliderDisplay] = useState("flex");
+  const changeHeaderBackground = (entries) => {
+    const [entry] = entries;
+    if (entry.isIntersecting) {
+      headerRef.current.style.backgroundColor = "transparent";
+    } else {
+      headerRef.current.style.backgroundColor = "#000";
     }
-  }
-  const IntersectionObserverOptions={
+  };
+  const IntersectionObserverOptions = {
     root: null,
-    rootMargin: '0px 0px 150px 0px',
-    threshold: 0.0
-  }
-  
-  
-  useEffect(()=>{ 
-  const observer=new IntersectionObserver(changeHeaderBackground,IntersectionObserverOptions)
-  observer.observe(movieDescriptionRef.current)
-  return ()=>{
-    if(headerRef.current) observer.unobserve(movieDescriptionRef.current)
-    
-  }
-  },[])
+    rootMargin: "0px 0px 150px 0px",
+    threshold: 0.0,
+  };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      changeHeaderBackground,
+      IntersectionObserverOptions
+    );
+    observer.observe(movieDescriptionRef.current);
+    return () => {
+      if (headerRef.current) observer.unobserve(movieDescriptionRef.current);
+    };
+  }, []);
 
   return (
-      <globalContext.Provider
-        value={
-          {
-            sliderDisplay,
-            setSliderDisplay
-          }
-        }
-      >
-        <Router hook={useHashLocation}>
-          <Header
-            headerRef={headerRef}
+    <globalContext.Provider
+      value={{
+        sliderDisplay,
+        setSliderDisplay,
+      }}
+    >
+      <Router hook={useHashLocation}>
+        <Header headerRef={headerRef} />
+        <Slider
+          movieDescriptionRef={movieDescriptionRef}
+          delay={3000}
+          length={4}
+          controls={true}
+          indicators={true}
+          info={true}
+          indicatorShape="circle"
+        />
+
+        <Switch>
+          <Route path="/" component={GeneralView} />
+          <Route path="/home/:page" component={GeneralView} />
+          <Route
+            path="/genre/:genre_name/:genre_id/:page"
+            component={GeneralView}
           />
-          <Slider
-            movieDescriptionRef={movieDescriptionRef}
-            delay={3000}
-            length={4}
-            controls={true}
-            indicators={true}
-            info={true}
-            indicatorShape="circle"
-          />
-        
-          <Switch>
-            <Route path="/" component={GeneralView}/>
-            <Route path="/home/:page" component={GeneralView}/>
-            <Route path="/genre/:genre_name/:genre_id/:page" component={GeneralView}/>
-            <Route path="/search/:keyword/:page" component={GeneralView}/>
-            <Route path="/detail/:movie_name/:movie_id" component={DetailView}/>
-          </Switch>
-          <Footer/>
-        </Router>
-     </globalContext.Provider>
-      
-    
+          <Route path="/search/:keyword/:page" component={GeneralView} />
+          <Route path="/detail/:movie_name/:movie_id" component={DetailView} />
+        </Switch>
+        <Footer />
+      </Router>
+    </globalContext.Provider>
   );
 }
 

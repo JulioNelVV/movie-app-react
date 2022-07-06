@@ -1,24 +1,23 @@
-.logo{
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    gap: 0.2rem;
-    width: 12rem;
-    cursor: pointer;
+.logo {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  width: 12rem;
+  cursor: pointer;
 }
 
-.logo__img{
-    display: block;
-    flex-basis: 10%;
-    height: 2rem;
-   
+.logo__img {
+  display: block;
+  flex-basis: 10%;
+  height: 2rem;
 }
-.logo__title{
-    display: block;
-    flex-basis: 90%;
-    flex-grow: 1;
-    color:#FFF;
-    font-size: 1.8rem;
-    text-align: center;
+.logo__title {
+  display: block;
+  flex-basis: 90%;
+  flex-grow: 1;
+  color: #fff;
+  font-size: 1.8rem;
+  text-align: center;
 }

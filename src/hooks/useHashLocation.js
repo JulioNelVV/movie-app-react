@@ -13,7 +13,7 @@ const useHashLocation = () => {
     return () => window.removeEventListener("hashchange", handler);
   }, []);
 
-  const navigate = useCallback(to => (window.location.hash = to), []);
+  const navigate = useCallback((to) => (window.location.hash = to), []);
   return [loc, navigate];
 };
 export default useHashLocation;
