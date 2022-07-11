@@ -10,25 +10,61 @@
     flex-flow: column nowrap;
     align-self: flex-end;
 }
+.tmdb-link{
+    text-decoration: none;
+    color: #FFF;
+}
+.tmdb-img{
+    object-fit: cover;
+    object-position: center;
+    width: 8rem;
+    height: auto;
+}
 .contact-info{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 80%;
+    overflow-x: scroll;
+}
+.phone-number,.email-address, .linkedin{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
 }
-.phone-icon{
+.linkedin{
+    text-decoration: none;
+    color: #FFF;
+}
+.icons{
     min-width: 2rem;
     min-height: 2rem;
     background-color: var(--accent-color);
     border-radius: 50%;
-    background-image: url("../../assets/images/phone.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 50% 50%;
 }
+.phone-number__icon{
+    background-image: url("../../assets/images/phone.svg");
+}
+.email-address__icon{
+    background-image: url("../../assets/images/e-mail.svg");
+}
+.linkedin__icon{
+    background-image: url("../../assets/images/linkedin.svg");
+}
+
 
 @media all and (min-width: 768px){
     .footer{
         flex-flow: row nowrap;
+    }
+    .contact-info{
+        width: auto;
+        overflow-x: hidden;
     }
 }
