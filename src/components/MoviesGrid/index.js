@@ -1,9 +1,12 @@
 import MovieCard from "../MovieCard";
 import useFetch from "../../hooks/useFetch";
 import Spinner  from "../Spinner";
+import Error from "../Error";
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import style from './style.module.css'
+
+
 function MoviesGrid({params, viewTitle, defaultTitle}){
     let currentParam=Object.keys(params)[0];
     const [page, setPage]=useState(Number(params.page)||1);
@@ -65,12 +68,13 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
     },[params.page])
 
     if(!isLoading&&error!==null){
-        return <p>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
+        return <Error error={error}/>
+        
     }
     if(!isLoading&&error===null&&data.results.length!==0){
         return(
             <>
-            <h1>{viewTitle[currentParam]||defaultTitle}</h1>
+            <h1 className={style["view-title"]}>{viewTitle[currentParam]||defaultTitle}</h1>
             <article className={style["movies-grid"]}>
                         {
                             data.results.map(({id, title, poster_path, release_date})=>{

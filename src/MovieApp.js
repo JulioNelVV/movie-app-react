@@ -6,10 +6,10 @@ import Slider from "./components/Slider";
 import useHashLocation from "./hooks/useHashLocation";
 import globalContext from "./context/globalContext";
 import DetailView from "./views/DetailView";
-
 import "./MovieApp.css";
 import Footer from "./components/Footer";
 import GeneralView from "./views/GeneralView";
+import NotFound from "./views/NotFound";
 function MovieApp() {
   const headerRef = useRef(null);
   const movieDescriptionRef = useRef(null);
@@ -67,6 +67,7 @@ function MovieApp() {
           />
           <Route path="/search/:keyword/:page" component={GeneralView} />
           <Route path="/detail/:movie_name/:movie_id" component={DetailView} />
+          <Route component={NotFound}>Hola 404</Route>
         </Switch>
         <Footer />
       </Router>

@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import globalContext from "../context/globalContext";
 import useFetch from "./useFetch";
 import style from "../components/Menu/style.module.css";
+import Error from "../components/Error"
 const useMenu = () => {
   const menuList = useRef();
   const inputSearch = useRef();
@@ -60,9 +61,7 @@ const useMenu = () => {
 
   if (!isLoading && error !== null) {
     submenu = (
-      <li>
-        Error: {` ${error.error} ${error.description || "Failed to Fetch"}`}
-      </li>
+      <Error error={error}/>
     );
   }
   if (!isLoading && error === null) {

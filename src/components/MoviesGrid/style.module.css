@@ -4,11 +4,16 @@
     grid-auto-flow: dense;
     justify-items: center;
     gap: 1rem;
-    margin: auto;
+    margin: 1rem auto;
     width: 100%;
     margin-top: 2rem;
     padding: 1rem;
     cursor: pointer;
+}
+.view-title{
+    margin:auto;
+    margin-top: 2rem;
+    color: #FFF;
 }
 .pages{
     margin: 1rem auto;

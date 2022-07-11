@@ -3,7 +3,7 @@ import { useLocation } from 'wouter';
 import globalContext from '../../context/globalContext';
 import useFetch from '../../hooks/useFetch';
 import style from './style.module.css'
-import Spinner  from "../Spinner";
+import Error from "../Error"
 function Slider({movieDescriptionRef, delay,length, controls, indicators, info, indicatorShape}){
     const [position, setPosition]=useState(0);
     const {sliderDisplay, setSliderDisplay}=useContext(globalContext);
@@ -59,7 +59,7 @@ function Slider({movieDescriptionRef, delay,length, controls, indicators, info, 
     }
     if(!isLoading&&error!==null){
         return(
-            <p style={{color: 'white', zIndex: '9999'}}>Error: {` ${error.error} ${error.description||"Failed to Fetch"}`}</p>
+           <Error error={error}/>
         )
     }
     

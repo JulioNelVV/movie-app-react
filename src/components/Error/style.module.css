@@ -1,0 +1,12 @@
+.error{
+    margin: 15vh auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row nowrap;
+    background-color: var(--accent-color);
+    color: #FFF;
+    font-size: 1.4rem;
+    padding: 1rem;
+}

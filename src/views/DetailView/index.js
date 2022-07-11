@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import Error from "../../components/Error";
 import Spinner from "../../components/Spinner";
 import globalContext from "../../context/globalContext";
 import useFetch from "../../hooks/useFetch";
@@ -21,9 +22,9 @@ function DetailView({ ...props }) {
 
   if (!isLoading && error !== null) {
     return (
-      <p>
-        Error: {` ${error.error} ${error.description || "Failed to Fetch"}`}
-      </p>
+      <div className="detail">
+        <Error error={error} />
+      </div>
     );
   }
   if (!isLoading && error === null && data.release_date) {
