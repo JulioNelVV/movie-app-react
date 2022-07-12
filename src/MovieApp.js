@@ -16,6 +16,8 @@ function MovieApp() {
   const [sliderDisplay, setSliderDisplay] = useState("flex");
   const changeHeaderBackground = (entries) => {
     const [entry] = entries;
+    console.log(entry)
+  
     if (entry.isIntersecting) {
       headerRef.current.style.backgroundColor = "transparent";
     } else {
