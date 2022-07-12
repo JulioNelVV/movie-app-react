@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+import { useLocation } from "wouter";
 import Error from "../../components/Error";
 import Spinner from "../../components/Spinner";
 import globalContext from "../../context/globalContext";
@@ -9,13 +10,16 @@ function DetailView({ ...props }) {
   const { params } = props;
   let year = "unknow";
   const { setSliderDisplay } = useContext(globalContext);
-
+  const [location, setLocation] = useLocation();
   const { data, isLoading, error } = useFetch(
     `https://api.themoviedb.org/3/movie/${params.movie_id}?api_key=583ad481a868c7cb43cca20c20a9d9c2`,
     null,
     params,
     1
   );
+  const onClickHandler = (name, id) => {
+    setLocation(`/genre/${name}/${id}/${1}`);
+  };
   useEffect(() => {
     setSliderDisplay("none");
   }, [params]);
@@ -38,23 +42,26 @@ function DetailView({ ...props }) {
           src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
         />
         <div className="movie-details">
-          <h2>
+          <h2 className="movie-title">
             {data.title} ({year})
           </h2>
-          <div>
-            Genres:
+          <div className="genres">
             {data.genres.map(({ id, name }) => {
-              return <div key={id}> {name}</div>;
+              return (
+                <div key={id} className="genres__item"onClick={() => onClickHandler(name, id)}>
+                  {name}
+                </div>
+              );
             })}
           </div>
-          <p>vote average: {data.vote_average}</p>
-          <h2>overview</h2>
-          <p>{data.overview}</p>
+          <p className="vote">vote average: {data.vote_average}</p>
+          <h2 className="overview-title">overview</h2>
+          <p className="overview-data">{data.overview}</p>
           <div>
-            <h2>Production companies</h2>
-            <ul>
+            <h2 className="companies-title">Production companies</h2>
+            <ul className="companies-list">
               {data.production_companies.map(({ id, name }) => {
-                return <li key={id}>{name}</li>;
+                return <li key={id} className="companies-item">{name}</li>;
               })}
             </ul>
           </div>
