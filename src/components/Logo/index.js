@@ -5,7 +5,12 @@ import style from './style.module.css'
 function Logo(){
     const [location, setLocation]=useLocation();
     const onClickHandler=()=>{
-        setLocation("/home/1")
+        setLocation("/home/1");
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
     }
     return(
         <div
