@@ -5,7 +5,7 @@ import Spinner from "../../components/Spinner";
 import globalContext from "../../context/globalContext";
 import useFetch from "../../hooks/useFetch";
 
-import "./style.css";
+import style from "./style.module.css";
 function DetailView({ ...props }) {
   const { params } = props;
   let year = "unknow";
@@ -36,32 +36,32 @@ function DetailView({ ...props }) {
   }
   if (!isLoading && error === null) {
     return (
-      <div className="detail">
+      <div className={style["detail"]}>
         <img
-          className="movie-poster"
+          className={style["movie-poster"]}
           src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
         />
-        <div className="movie-details">
-          <h2 className="movie-title">
+        <div className={style["movie-details"]}>
+          <h2 className={style["movie-title"]}>
             {data.title} ({year})
           </h2>
-          <div className="genres">
+          <div className={style["genres"]}>
             {data.genres.map(({ id, name }) => {
               return (
-                <div key={id} className="genres__item"onClick={() => onClickHandler(name, id)}>
+                <div key={id} className={style["genres__item"]}onClick={() => onClickHandler(name, id)}>
                   {name}
                 </div>
               );
             })}
           </div>
-          <p className="vote">vote average: {data.vote_average}</p>
-          <h2 className="overview-title">overview</h2>
-          <p className="overview-data">{data.overview}</p>
+          <p className={style["vote"]}>vote average: {data.vote_average}</p>
+          <h2 className={style["overview-title"]}>overview</h2>
+          <p className={style["overview-data"]}>{data.overview}</p>
           <div>
-            <h2 className="companies-title">Production companies</h2>
-            <ul className="companies-list">
+            <h2 className={style["companies-title"]}>Production companies</h2>
+            <ul className={style["companies-list"]}>
               {data.production_companies.map(({ id, name }) => {
-                return <li key={id} className="companies-item">{name}</li>;
+                return <li key={id} className={style["companies-item"]}>{name}</li>;
               })}
             </ul>
           </div>
