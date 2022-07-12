@@ -3,6 +3,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
+    align-items: center;
     gap: 1rem;
     margin-top: 15vh;
     color: #FFF;
@@ -16,10 +17,14 @@
 .movie-title,.vote,.overview-title, .companies-title{
     text-align: center;
 }
+.movie-title{
+    margin: 1rem auto;
+}
 .overview-data{
     text-align: justify;
     padding: 0.5rem;
     margin: 1rem auto;
+    
 }
 .vote{
     padding: 0.5rem;
@@ -35,6 +40,8 @@
     flex-flow: row wrap;
     width: 100%;
     justify-content: space-evenly;
+    margin: 1rem auto;
+    gap: 0.5rem;
 }
 .genres__item{
     cursor: pointer;
@@ -43,10 +50,38 @@
     background-color: var(--accent-color);
     margin: 1rem auto;
 }
+.genres__item:hover{
+    background-color: var(--accent-color-dark);
+}
 .companies-list{
     padding: 1rem 2rem;
+    margin: 0rem auto;
 }
 .companies-item{
     list-style:disc;
     margin: 0.5rem auto;
+}
+@media all and (min-width: 768px){
+    .detail{
+        position: relative;
+    }
+    .movie-poster{
+        position: absolute;
+        top:0;
+        left: 0;
+        height: 100vh;
+        filter: brightness(0.5);
+    }
+    .movie-details{
+        z-index: 1;
+    }
+    .genres{
+        width: max-content;
+    }
+    .overview-data{
+        padding: 0rem 2rem;
+    }
+    .companies-list{
+        width: max-content;
+    }
 }

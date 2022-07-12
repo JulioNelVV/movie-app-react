@@ -49,7 +49,7 @@
     color: var(--accent-color);
 }
 .movie-description{
-    color: #9c9b9b;
+    color: var(--secondary-text);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.7rem;
     height: 5.3rem;
