@@ -38,7 +38,7 @@
 .genres{
     display: flex;
     flex-flow: row wrap;
-    width: 100%;
+    width: max-content;
     justify-content: space-evenly;
     margin: 1rem auto;
     gap: 0.5rem;
@@ -74,9 +74,6 @@
     }
     .movie-details{
         z-index: 1;
-    }
-    .genres{
-        width: max-content;
     }
     .overview-data{
         padding: 0rem 2rem;
