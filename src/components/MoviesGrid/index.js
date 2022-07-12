@@ -32,6 +32,11 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
     url=fetchUrls[currentParam]|| DEFAULT_URL;
     const {data, isLoading, error}=useFetch(url, null, params, page);
     const nextPage=()=>{
+        window.scroll({
+            top: window.innerHeight-(window.innerHeight/7),
+            left: 0,
+            behavior: 'smooth'
+          });
         if(page>=PAGES_LIMIT){
             setPage(PAGES_LIMIT);
         }else{
@@ -43,7 +48,11 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
         }
     }
     const previousPage=()=>{
-       
+        window.scroll({
+            top: window.innerHeight-(window.innerHeight/7),
+            left: 0,
+            behavior: 'smooth'
+          });
         if(page===1){
             setPage(1);
         }else{
@@ -51,6 +60,11 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
         }
     }
     const lastPage=()=>{
+        window.scroll({
+            top: window.innerHeight-(window.innerHeight/7),
+            left: 0,
+            behavior: 'smooth'
+          });
         if(data.total_pages>=PAGES_LIMIT){
             setPage(PAGES_LIMIT)   
         }else{
@@ -60,13 +74,15 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
   
      
    
-   
+   useEffect(()=>{
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+   },[])
     useEffect(()=>{
-        window.scroll({
-            top: window.innerHeight-(window.innerHeight/7),
-            left: 0,
-            behavior: 'smooth'
-          });
+        
         setLocation(locations[currentParam])||setLocation(DEFAULT_LOCATION);  
     },[page])
     useEffect(()=>{
