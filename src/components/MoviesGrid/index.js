@@ -43,6 +43,7 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
         }
     }
     const previousPage=()=>{
+       
         if(page===1){
             setPage(1);
         }else{
@@ -61,6 +62,11 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
    
    
     useEffect(()=>{
+        window.scroll({
+            top: window.innerHeight-(window.innerHeight/7),
+            left: 0,
+            behavior: 'smooth'
+          });
         setLocation(locations[currentParam])||setLocation(DEFAULT_LOCATION);  
     },[page])
     useEffect(()=>{

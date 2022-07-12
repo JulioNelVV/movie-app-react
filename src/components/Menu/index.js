@@ -43,7 +43,14 @@ function Menu() {
             </form>
           </li>
           <li className={style["menu-list__item"]}>
-            <Link onClick={() => setVisible(false)} to="/home/1">
+            <Link onClick={() =>{
+              setVisible(false)
+              window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+              });
+              }} to="/home/1">
               <a className={style["menu-list__link"]}>Home</a>
             </Link>
           </li>

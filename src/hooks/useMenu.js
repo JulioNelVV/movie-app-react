@@ -24,6 +24,11 @@ const useMenu = () => {
   const onClickGenre = () => {
     setSliderDisplay("flex");
     setVisible(false);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   };
   const onChangeHandler = () => {
     setMovie(inputSearch.current.value);
@@ -34,6 +39,11 @@ const useMenu = () => {
     setSliderDisplay("none");
     setMovie("");
     toggleVisible();
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   };
   useEffect(() => {
     window.addEventListener("resize", () => {
