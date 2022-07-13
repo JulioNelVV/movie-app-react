@@ -40,7 +40,7 @@
     
 }
 .movie-title{
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 1rem;
     cursor: pointer;
     transition: all 0.3s linear;
@@ -130,12 +130,15 @@
 
 @media all and (min-width:768px){
     .movie-info{
-        font-size: 1.7rem;
-        line-height: 1.7rem;
-        height: 5.3rem;
+        
+    }
+    .movie-description{
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        height: 6rem;
     }
     .movie-title{
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 }
 @media all and (max-width: 480px){
