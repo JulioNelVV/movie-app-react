@@ -9,7 +9,7 @@ import style from "./style.module.css";
 function DetailView({ ...props }) {
   const { params } = props;
   let year = "unknow";
-  const { setSliderDisplay } = useContext(globalContext);
+  const { sliderDisplay, setSliderDisplay } = useContext(globalContext);
   const [location, setLocation] = useLocation();
   const { data, isLoading, error } = useFetch(
     `https://api.themoviedb.org/3/movie/${params.movie_id}?api_key=583ad481a868c7cb43cca20c20a9d9c2`,
@@ -20,6 +20,9 @@ function DetailView({ ...props }) {
   const onClickHandler = (name, id) => {
     setLocation(`/genre/${name}/${id}/${1}`);
   };
+  useEffect(()=>{
+    setSliderDisplay("none");
+  },[])
   useEffect(() => {
     setSliderDisplay("none");
   }, [params]);

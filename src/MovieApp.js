@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Router } from "wouter";
 import { Route, Switch } from "wouter";
 import Header from "./components/Header";
@@ -13,11 +13,12 @@ import NotFound from "./views/NotFound";
 function MovieApp() {
   const headerRef = useRef(null);
   const movieDescriptionRef = useRef(null);
-  const [sliderDisplay, setSliderDisplay] = useState("flex");
+  const [slider, setSlider] = useState("flex");
+  const {sliderDisplay, setSliderDisplay}=useContext(globalContext)
   const changeHeaderBackground = (entries) => {
     const [entry] = entries;
-    console.log(entry)
-  
+    console.log(entry.isIntersecting)
+    console.log(sliderDisplay)
     if (entry.isIntersecting) {
       headerRef.current.style.backgroundColor = "transparent";
     } else {
@@ -44,8 +45,8 @@ function MovieApp() {
   return (
     <globalContext.Provider
       value={{
-        sliderDisplay,
-        setSliderDisplay,
+        sliderDisplay:slider,
+        setSliderDisplay:setSlider,
       }}
     >
       <Router hook={useHashLocation}>

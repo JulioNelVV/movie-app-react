@@ -35,8 +35,8 @@ const useMenu = () => {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    setLocation(`/search/${movie}/${1}`);
     setSliderDisplay("none");
+    setLocation(`/search/${movie}/${1}`);
     setMovie("");
     toggleVisible();
     window.scroll({
