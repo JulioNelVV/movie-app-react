@@ -8,9 +8,11 @@ function GeneralView({ ...props }) {
   let currentParam = Object.keys(params)[0] || "";
   const defaultTitle = "Most popular movies";
   const viewTitle = {
-    keyword: `search results for ${params.keyword}`,
+    keyword: `search results for ${
+      params[currentParam] ? params[currentParam].replace(/%20/g, " ") : ""
+    }`,
     genre_name: `${
-      params[currentParam] ? params[currentParam].replace("%20", " ") : ""
+      params[currentParam] ? params[currentParam].replace(/%20/g, " ") : ""
     }`,
   };
   useEffect(() => {

@@ -129,7 +129,7 @@ function MoviesGrid({params, viewTitle, defaultTitle}){
     }
     if(!isLoading&&error===null&data.results.length===0){
         return(
-            <h1>Not search results were found for {params.keyword}</h1>
+            <h1>Not search results were found for {viewTitle[currentParam]||defaultTitle}</h1>
         )
     }
     if(isLoading){

@@ -21,16 +21,16 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.5rem;
     
 }
 .pages *{
-    font-size: 1.3rem;
+    font-size: 1rem;
     transition: all 0.2s ease-in-out;
 }
 .pages input{
-    min-width: 3rem;
-    min-height: 3rem;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -46,7 +46,7 @@
     gap: 0.5rem;
     background-color: var(--accent-color);
     border-radius: 2rem;
-    padding: 0.3rem;
+    padding: 0.2rem;
 }
 .pages-indicator{
     background-color: transparent;

@@ -54,7 +54,7 @@ const useMenu = () => {
         }
       }
     });
-  }, []);
+  }, [window.screen.width]);
   useEffect(() => {
     if (!isLoading && visible) {
       menuList.current.classList.add(style["menu-list--show"]);
