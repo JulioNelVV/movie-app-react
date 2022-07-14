@@ -64,7 +64,17 @@ For the style of each component it's used module css with the BEM methodology
 
 ## App in Desktop version  
 
+**Hero Slider**  
+
 ![image](https://user-images.githubusercontent.com/98757236/179028477-4f1f40de-2fd2-4673-9b1f-6879cbbfd165.png)
+
+**Header and Menu**  
+
+![image](https://user-images.githubusercontent.com/98757236/179028912-54bafd89-b809-4c93-8e6d-d9469e22a28c.png)  
+
+**Submenu**  
+
+![image](https://user-images.githubusercontent.com/98757236/179029253-8c7b5c92-8246-4a43-a843-5771d8f68dc7.png)
 
 
 
