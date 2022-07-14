@@ -1,12 +1,12 @@
-.error{
-    margin: 15vh auto;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: row nowrap;
-    background-color: var(--accent-color);
-    color: #FFF;
-    font-size: 1.4rem;
-    padding: 1rem;
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap;
+  width: 100%;
+  margin: 15vh auto;
+  padding: 1rem;
+  background-color: var(--accent-color);
+  color: #fff;
+  font-size: 1.4rem;
 }

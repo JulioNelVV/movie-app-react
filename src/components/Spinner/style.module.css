@@ -1,27 +1,27 @@
-.spinner{
-    margin: 1rem auto;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    border: 0.4rem solid rgb(180, 180, 180);
-    border-left-color: var(--accent-color);
-    cursor: pointer;
-    animation: spin 1s infinite linear;
+.spinner {
+  margin: 1rem auto;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 0.4rem solid rgb(180, 180, 180);
+  border-left-color: var(--accent-color);
+  cursor: pointer;
+  animation: spin 1s infinite linear;
 }
-.spinner:hover{
-    opacity: 0.8;
+.spinner:hover {
+  opacity: 0.8;
 }
-.spinner-title{
-    text-align: center;
-    margin: 1rem auto;
-    font-size: 1rem;
-    color: #FFF;
+.spinner-title {
+  margin: 1rem auto;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
 }
-@keyframes spin{
-    from{
-        transform: rotateZ(0deg);
-    }
-    to{
-        transform: rotateZ(360deg);
-    }
+@keyframes spin {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
 }

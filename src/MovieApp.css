@@ -1,13 +1,13 @@
-.view{
-    min-height: 100vh;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    align-items: center;
+.view {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
 }
-.view--slider-flex{
-    margin-top:0;
+.view--slider-flex {
+  margin-top: 0;
 }
-.view--slider-none{
-    margin-top: 15vh;
+.view--slider-none {
+  margin-top: 15vh;
 }

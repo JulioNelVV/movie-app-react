@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import globalContext from "../context/globalContext";
 import useFetch from "./useFetch";
 import style from "../components/Menu/style.module.css";
-import Error from "../components/Error"
+import Error from "../components/Error";
 const useMenu = () => {
   const menuList = useRef();
   const inputSearch = useRef();
@@ -17,18 +17,20 @@ const useMenu = () => {
   const [location, setLocation] = useLocation();
   const { data, isLoading, error } = useFetch(URL);
   const { setSliderDisplay } = useContext(globalContext);
-
+  const goTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
   const toggleVisible = () => {
     setVisible(!visible);
   };
   const onClickGenre = () => {
     setSliderDisplay("flex");
     setVisible(false);
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    goTop();
   };
   const onChangeHandler = () => {
     setMovie(inputSearch.current.value);
@@ -39,11 +41,7 @@ const useMenu = () => {
     setLocation(`/search/${movie}/${1}`);
     setMovie("");
     toggleVisible();
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth'
-    });
+    goTop();
   };
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -70,9 +68,7 @@ const useMenu = () => {
   }, [visible]);
 
   if (!isLoading && error !== null) {
-    submenu = (
-      <Error error={error}/>
-    );
+    submenu = <Error error={error} />;
   }
   if (!isLoading && error === null) {
     submenu = data.genres.map((genre) => {
@@ -100,6 +96,7 @@ const useMenu = () => {
     toggleVisible,
     onSubmitHandler,
     onChangeHandler,
+    goTop,
   };
 };
 export default useMenu;

@@ -9,7 +9,7 @@ import style from "./style.module.css";
 function DetailView({ ...props }) {
   const { params } = props;
   let year = "unknow";
-  const { sliderDisplay, setSliderDisplay } = useContext(globalContext);
+  const { setSliderDisplay } = useContext(globalContext);
   const [location, setLocation] = useLocation();
   const { data, isLoading, error } = useFetch(
     `https://api.themoviedb.org/3/movie/${params.movie_id}?api_key=583ad481a868c7cb43cca20c20a9d9c2`,
@@ -20,9 +20,9 @@ function DetailView({ ...props }) {
   const onClickHandler = (name, id) => {
     setLocation(`/genre/${name}/${id}/${1}`);
   };
-  useEffect(()=>{
+  useEffect(() => {
     setSliderDisplay("none");
-  },[])
+  }, []);
   useEffect(() => {
     setSliderDisplay("none");
   }, [params]);
@@ -51,7 +51,11 @@ function DetailView({ ...props }) {
           <div className={style["genres"]}>
             {data.genres.map(({ id, name }) => {
               return (
-                <div key={id} className={style["genres__item"]}onClick={() => onClickHandler(name, id)}>
+                <div
+                  key={id}
+                  className={style["genres__item"]}
+                  onClick={() => onClickHandler(name, id)}
+                >
                   {name}
                 </div>
               );
@@ -64,7 +68,11 @@ function DetailView({ ...props }) {
             <h2 className={style["companies-title"]}>Production companies</h2>
             <ul className={style["companies-list"]}>
               {data.production_companies.map(({ id, name }) => {
-                return <li key={id} className={style["companies-item"]}>{name}</li>;
+                return (
+                  <li key={id} className={style["companies-item"]}>
+                    {name}
+                  </li>
+                );
               })}
             </ul>
           </div>

@@ -1,23 +1,22 @@
-:root{
-    --accent-color: #E50914;
-    --accent-color-dark: #aa070f;
-    --secondary-text: #9c9b9b;
-    --body-background-color: #181818;
+:root {
+  --accent-color: #e50914;
+  --accent-color-dark: #aa070f;
+  --secondary-text: #9c9b9b;
+  --body-background-color: #181818;
 }
 *,
 *::before,
-*::after{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-    list-style: none;
-    text-decoration: none;
-    scroll-margin-top: 15vh;
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  list-style: none;
+  text-decoration: none;
+  scroll-margin-top: 15vh;
 }
 
-body{
-    position: relative;
-    background-color: var(--body-background-color);
+body {
+  position: relative;
+  background-color: var(--body-background-color);
 }
-

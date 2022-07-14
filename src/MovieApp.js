@@ -14,11 +14,11 @@ function MovieApp() {
   const headerRef = useRef(null);
   const movieDescriptionRef = useRef(null);
   const [slider, setSlider] = useState("flex");
-  const {sliderDisplay, setSliderDisplay}=useContext(globalContext)
+  const { sliderDisplay, setSliderDisplay } = useContext(globalContext);
   const changeHeaderBackground = (entries) => {
     const [entry] = entries;
-    console.log(entry.isIntersecting)
-    console.log(sliderDisplay)
+    console.log(entry.isIntersecting);
+    console.log(sliderDisplay);
     if (entry.isIntersecting) {
       headerRef.current.style.backgroundColor = "transparent";
     } else {
@@ -45,8 +45,8 @@ function MovieApp() {
   return (
     <globalContext.Provider
       value={{
-        sliderDisplay:slider,
-        setSliderDisplay:setSlider,
+        sliderDisplay: slider,
+        setSliderDisplay: setSlider,
       }}
     >
       <Router hook={useHashLocation}>

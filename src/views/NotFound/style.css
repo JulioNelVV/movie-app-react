@@ -1,12 +1,12 @@
 .not-found {
-  margin: 15vh auto;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: row nowrap;
+  margin: 15vh auto;
+  padding: 1rem;
+  width: 100%;
   background-color: var(--accent-color);
   color: #fff;
   font-size: 1.4rem;
-  padding: 1rem;
 }

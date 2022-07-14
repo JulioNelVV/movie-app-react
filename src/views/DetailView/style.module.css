@@ -1,13 +1,12 @@
 .detail {
-  min-height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
   margin-top: 15vh;
+  min-height: 100vh;
   color: #fff;
- 
 }
 .movie-poster {
   width: 100%;
@@ -15,7 +14,7 @@
   object-fit: cover;
   object-position: center;
 }
-.movie-details{
+.movie-details {
   width: 100%;
   font-size: 1rem;
 }
@@ -29,58 +28,58 @@
   margin: 1rem auto;
   font-size: 1.8rem;
 }
-.overview-title, .companies-title{
+.overview-title,
+.companies-title {
   font-size: 1.6rem;
 }
 .overview-data {
-  text-align: justify;
-  padding: 0.5rem;
   margin: 1rem auto;
+  padding: 0.5rem;
+  text-align: justify;
   font-size: 1rem;
 }
 .vote {
-  padding: 0.5rem;
-  border-radius: 1.5rem;
   margin: 1rem auto;
+  padding: 0.5rem;
+  width: 12rem;
+  border-radius: 1.5rem;
   background-color: #fff;
   color: #000;
-  width: 12rem;
   font-size: 1rem;
 }
 
 .genres {
-  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  width: 100%;
   font-size: 1rem;
 }
 .genres__item {
-  cursor: pointer;
   padding: 0.5rem;
   border-radius: 1.5rem;
   background-color: var(--accent-color);
   text-align: center;
   font-size: 1rem;
+  cursor: pointer;
 }
 .genres__item:hover {
   background-color: var(--accent-color-dark);
 }
 .companies-list {
-  padding: 1rem 2rem;
   margin: 0rem auto;
+  padding: 1rem 2rem;
   font-size: 1rem;
 }
 .companies-item {
-  list-style: disc;
   margin: 0.5rem auto;
   font-size: 1rem;
+  list-style: disc;
 }
 @media all and (min-width: 768px) {
   .detail {
-
     justify-content: space-between;
     height: 100vh;
   }
@@ -91,17 +90,20 @@
     height: 100vh;
     filter: brightness(0.5);
   }
-  .movie-title{
+  .movie-title {
     font-size: 2.2rem;
   }
   .movie-details {
     z-index: 1;
   }
-  .overview-data,.genres, .vote, .companies-item {
+  .overview-data,
+  .genres,
+  .vote,
+  .companies-item {
     padding: 0rem 2rem;
     font-size: 1.2rem;
   }
-  .vote{
+  .vote {
     width: 14rem;
     padding: 0.5rem;
   }
