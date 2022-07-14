@@ -33,6 +33,10 @@ For the style of each component it's used module css with the BEM methodology
 
 ![image](https://user-images.githubusercontent.com/98757236/178884397-64b29c6a-d17c-4c8a-900e-ca4f2fae76bd.png)
 
+**Responsive Menu**  
+
+![image](https://user-images.githubusercontent.com/98757236/179025019-86f5bf2e-e0f2-476e-8f6f-17c414436d35.png)
+
 **Movies grid**  
 
 ![image](https://user-images.githubusercontent.com/98757236/179022813-978cd439-ef6f-4426-9e5c-bc8d5cd1ea1e.png)
@@ -40,6 +44,28 @@ For the style of each component it's used module css with the BEM methodology
 **Navigation**  
 
 ![image](https://user-images.githubusercontent.com/98757236/179023109-2e726c34-600c-48d9-80ea-257e73d6ad65.png)
+
+**Footer**  
+
+![image](https://user-images.githubusercontent.com/98757236/179024820-9e664f43-2906-4037-b679-1336f6767422.png)
+
+**Genres view**  
+
+![image](https://user-images.githubusercontent.com/98757236/179025283-545ae393-255b-4aff-bd4e-f2b3d3ab089c.png)
+
+**Search view**  
+
+![image](https://user-images.githubusercontent.com/98757236/179025583-d1347d43-858c-4ac1-8963-adfce2aa903c.png)
+
+**Details view**  
+
+![image](https://user-images.githubusercontent.com/98757236/179025715-273196e2-414f-456c-accb-b1e75a9076e7.png)  
+![image](https://user-images.githubusercontent.com/98757236/179025831-91333428-1306-44ad-a2f8-c66390e11c34.png)  
+
+
+
+
+
 
 
 
