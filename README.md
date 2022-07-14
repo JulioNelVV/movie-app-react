@@ -62,6 +62,9 @@ For the style of each component it's used module css with the BEM methodology
 ![image](https://user-images.githubusercontent.com/98757236/179025715-273196e2-414f-456c-accb-b1e75a9076e7.png)  
 ![image](https://user-images.githubusercontent.com/98757236/179025831-91333428-1306-44ad-a2f8-c66390e11c34.png)  
 
+## App in Desktop version  
+
+![image](https://user-images.githubusercontent.com/98757236/179028477-4f1f40de-2fd2-4673-9b1f-6879cbbfd165.png)
 
 
 
