@@ -74,7 +74,29 @@ For the style of each component it's used module css with the BEM methodology
 
 **Submenu**  
 
-![image](https://user-images.githubusercontent.com/98757236/179029253-8c7b5c92-8246-4a43-a843-5771d8f68dc7.png)
+![image](https://user-images.githubusercontent.com/98757236/179029253-8c7b5c92-8246-4a43-a843-5771d8f68dc7.png)  
+
+**Movies grid**  
+
+![image](https://user-images.githubusercontent.com/98757236/179029516-4105be8a-4309-47d2-8cda-90c22aa37f95.png)  
+
+**Genres view**  
+
+![image](https://user-images.githubusercontent.com/98757236/179029626-9ef0ef7d-b778-4afd-a348-5ae474e282a6.png)  
+
+**Search view**  
+
+![image](https://user-images.githubusercontent.com/98757236/179029760-74d1f18b-f06a-49f8-85a0-c6da965c53ab.png)  
+
+**Details view**  
+![image](https://user-images.githubusercontent.com/98757236/179029897-593a1ec7-275b-4db3-b6a0-7939abad3dff.png)  
+
+
+
+
+
+
+
 
 
 
