@@ -1,6 +1,6 @@
 # Movie App using React JS
 
-This is a movie app created using React Js as the UI core library, React Context API for the global state, react-wouter library for the dynamic routing and the SPA behaviour and the native Fetch API for fetching the data from The Movie Database server (you can learn more about The movie Datebase in: [The movie database website](https://www.themoviedb.org/?language=es)).
+This is a movie app created using React Js as the UI core library, React Context API for the global state, react-wouter library for the dynamic routing and the SPA behaviour and the native Fetch API for fetching the data from The Movie Database server (you can learn more about The movie Datebase in: [The movie database website](https://www.themoviedb.org/?language=es)). The App was deployed using the github pages service and it can be visited in: <https://julionelvv.github.io/movie-app-react/#/home/1>
 
 ## Structure of the App
 
