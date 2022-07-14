@@ -42,6 +42,7 @@ function DetailView({ ...props }) {
       <div className={style["detail"]}>
         <img
           className={style["movie-poster"]}
+          alt="movie-poster"
           src={`https://image.tmdb.org/t/p/original/${data.backdrop_path}`}
         />
         <div className={style["movie-details"]}>

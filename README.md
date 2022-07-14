@@ -10,15 +10,21 @@ If you search for a route that does not exist, the app will show a 404 not found
 
 For the style of each component it's used module css with the BEM methodology
 
+### Views of the App
+
+* GeneralView: A view in which you see the most popular movies (home), the movies of a genre or search for an specific movie.
+* DeatilView: This view shows the details about an specific movie. You can access the details of the movie just clicking in a movieCard component.
+
 ### Compoenents of the App
 
 * Error: This component show you an error message in a view or a component whose fetching data fails.
 * Footer: This component render the logo, the attributions and some contact information.
 * Header: This component contains the logo and the entire navigation  menu.
 * Logo: An static component that could be used in any part of the app, it's only purpose is show the logo and go to the home page
-* Menu: A responsive navigation menu for going into the different genres, the search bar or the home page.
-* MovieCard: This component shows the image, the title, and the release year of a single movie that belongs to the current view, its onClick show you the details about the movie.
+* Menu: A responsive navigation menu for going to the different genres, the search bar or the home page.
+* MovieCard: This component shows the image, the title, and the release year of a single movie that belongs to the current view and its onClick show you the details about the movie.
 * MoviesGrid: This component Fetch the data from the API to show you all the movieCards in an specific page and let you navigate the different pages gotten from the API.
 * Slider: This component is a dual (manual and automatic change) slider that show you a code customizable amount of movies gotten from the API.
-* Spinner: While the components are Fetching the data a spinner component will be shown in the screen.
+* gSpinner: While the components are Fetching the data a spinner component will be shown in the screen.
+
 
