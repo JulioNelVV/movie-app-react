@@ -7,6 +7,7 @@
   gap: 1rem;
   margin-top: 15vh;
   color: #fff;
+  font-size: 1rem;
 }
 .movie-poster {
   width: 100%;
@@ -26,11 +27,16 @@
 }
 .movie-title {
   margin: 1rem auto;
+  font-size: 1.8rem;
+}
+.overview-title, .companies-title{
+  font-size: 1.6rem;
 }
 .overview-data {
   text-align: justify;
   padding: 0.5rem;
   margin: 1rem auto;
+  font-size: 1rem;
 }
 .vote {
   padding: 0.5rem;
@@ -80,11 +86,19 @@
     height: 100vh;
     filter: brightness(0.5);
   }
+  .movie-title{
+    font-size: 2.2rem;
+  }
   .movie-details {
     z-index: 1;
   }
-  .overview-data {
+  .overview-data,.genres, .vote, .companies-item {
     padding: 0rem 2rem;
+    font-size: 1.2rem;
+  }
+  .vote{
+    width: 14rem;
+    padding: 0.5rem;
   }
   .companies-list {
     width: max-content;
