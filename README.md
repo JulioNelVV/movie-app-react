@@ -29,7 +29,7 @@ For the style of each component it's used module css with the BEM methodology
 
 ### App in mobile version
 
-**Slider**  
+**Hero Slider**  
 
 ![image](https://user-images.githubusercontent.com/98757236/178884397-64b29c6a-d17c-4c8a-900e-ca4f2fae76bd.png)
 
