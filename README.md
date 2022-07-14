@@ -4,7 +4,7 @@ This is a movie app created using React Js as the UI core library, React Context
 
 ## Structure of the App
 
-The App has 2 types of view, the general view in which you can see the most popular movies, genres movies or search an movie by a keyword; and the other view is the deatils view where you can find the most relevant informafion about an specific movie. You can surf the different pages of every view using navigation buttons, and you can see a manual or automatic slider at the top of the App showing the four (it's a customizable number) most popular movies.
+The App has 2 types of view, the general view in which you can see the most popular movies, genres movies or search a movie by a keyword; and the other view is the deatils view where you can find the most relevant informafion about an specific movie. You can surf the different pages of every view using navigation buttons, and you can see a manual or automatic slider at the top of the App showing the four (it's a customizable number) most popular movies.
 
 If you search for a route that does not exist, the app will show a 404 not found error, as the same way if you have a broken URL or the fetching fails it will show you an error message.
 
@@ -41,7 +41,7 @@ For the style of each component it's used module css with the BEM methodology
 
 ![image](https://user-images.githubusercontent.com/98757236/179022813-978cd439-ef6f-4426-9e5c-bc8d5cd1ea1e.png)
 
-**Navigation**  
+**Pagination**  
 
 ![image](https://user-images.githubusercontent.com/98757236/179023109-2e726c34-600c-48d9-80ea-257e73d6ad65.png)
 
@@ -80,6 +80,14 @@ For the style of each component it's used module css with the BEM methodology
 
 ![image](https://user-images.githubusercontent.com/98757236/179029516-4105be8a-4309-47d2-8cda-90c22aa37f95.png)  
 
+**Pagination**  
+
+![image](https://user-images.githubusercontent.com/98757236/179030569-eb96fe6e-80de-4e0b-a4d7-de1f50c8fdb3.png)  
+
+**Footer**  
+
+![image](https://user-images.githubusercontent.com/98757236/179030735-6b6f6622-79ae-45e2-8cd8-cf54956581ab.png)  
+
 **Genres view**  
 
 ![image](https://user-images.githubusercontent.com/98757236/179029626-9ef0ef7d-b778-4afd-a348-5ae474e282a6.png)  
@@ -89,6 +97,7 @@ For the style of each component it's used module css with the BEM methodology
 ![image](https://user-images.githubusercontent.com/98757236/179029760-74d1f18b-f06a-49f8-85a0-c6da965c53ab.png)  
 
 **Details view**  
+
 ![image](https://user-images.githubusercontent.com/98757236/179029897-593a1ec7-275b-4db3-b6a0-7939abad3dff.png)  
 
 
