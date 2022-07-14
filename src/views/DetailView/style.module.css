@@ -7,7 +7,7 @@
   gap: 1rem;
   margin-top: 15vh;
   color: #fff;
-  font-size: 1rem;
+ 
 }
 .movie-poster {
   width: 100%;
@@ -17,7 +17,7 @@
 }
 .movie-details{
   width: 100%;
- 
+  font-size: 1rem;
 }
 .movie-title,
 .vote,
@@ -36,7 +36,7 @@
   text-align: justify;
   padding: 0.5rem;
   margin: 1rem auto;
-
+  font-size: 1rem;
 }
 .vote {
   padding: 0.5rem;
@@ -45,6 +45,7 @@
   background-color: #fff;
   color: #000;
   width: 12rem;
+  font-size: 1rem;
 }
 
 .genres {
@@ -54,6 +55,7 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  font-size: 1rem;
 }
 .genres__item {
   cursor: pointer;
@@ -61,6 +63,7 @@
   border-radius: 1.5rem;
   background-color: var(--accent-color);
   text-align: center;
+  font-size: 1rem;
 }
 .genres__item:hover {
   background-color: var(--accent-color-dark);
@@ -68,10 +71,12 @@
 .companies-list {
   padding: 1rem 2rem;
   margin: 0rem auto;
+  font-size: 1rem;
 }
 .companies-item {
   list-style: disc;
   margin: 0.5rem auto;
+  font-size: 1rem;
 }
 @media all and (min-width: 768px) {
   .detail {

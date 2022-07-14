@@ -29,7 +29,7 @@ function DetailView({ ...props }) {
 
   if (!isLoading && error !== null) {
     return (
-      <div className="detail">
+      <div className={style["detail"]}>
         <Error error={error} />
       </div>
     );
