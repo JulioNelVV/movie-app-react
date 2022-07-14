@@ -55,7 +55,7 @@ For the style of each component it's used module css with the BEM methodology
 
 **Search view**  
 
-![image](https://user-images.githubusercontent.com/98757236/179025583-d1347d43-858c-4ac1-8963-adfce2aa903c.png)
+![image](https://user-images.githubusercontent.com/98757236/179027721-53e095e1-d931-4c6f-a466-0e06acc24cf8.png)  
 
 **Details view**  
 
