@@ -20,12 +20,12 @@ For the style of each component it's used module css with the BEM methodology
 * Error: This component show you an error message in a view or a component whose fetching data fails.
 * Footer: This component render the logo, the attributions and some contact information.
 * Header: This component contains the logo and the entire navigation  menu, when the app is showing the slider its background will be transparent, in other case will be black.
-* Logo: An static component that could be used in any part of the app, it's only purpose is show the logo and go to the home page
+* Logo: An static component that could be used in any part of the app, its only purpose is show the logo and go to the home page.
 * Menu: A responsive navigation menu for going to the different genres, the search bar or the home page.
-* MovieCard: This component shows the image, the title, and the release year of a single movie that belongs to the current view and its onClick show you the details about the movie.
+* MovieCard: This component shows the image, the title, and the release year of a single movie that belongs to the current view and its onClick property shows you the details about the movie.
 * MoviesGrid: This component Fetch the data from the API to show you all the movieCards in an specific page and let you navigate the different pages gotten from the API.
-* Slider: This component is a dual (manual and automatic change) slider that show you a code customizable amount of movies gotten from the API.
-* gSpinner: While the components are Fetching the data a spinner component will be shown in the screen.
+* Slider: This component is a dual (manual and automatic) hero slider that show you a code customizable amount of movies gotten from the API.
+* Spinner: While the components are Fetching the data a spinner component will be shown in the screen.
 
 ### App in mobile version
 
