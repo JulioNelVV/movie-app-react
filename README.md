@@ -27,4 +27,8 @@ For the style of each component it's used module css with the BEM methodology
 * Slider: This component is a dual (manual and automatic change) slider that show you a code customizable amount of movies gotten from the API.
 * gSpinner: While the components are Fetching the data a spinner component will be shown in the screen.
 
+### App in mobile version
+
+![image](https://user-images.githubusercontent.com/98757236/178884397-64b29c6a-d17c-4c8a-900e-ca4f2fae76bd.png)
+
 
