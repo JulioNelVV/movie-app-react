@@ -19,7 +19,7 @@ For the style of each component it's used module css with the BEM methodology
 
 * Error: This component show you an error message in a view or a component whose fetching data fails.
 * Footer: This component render the logo, the attributions and some contact information.
-* Header: This component contains the logo and the entire navigation  menu.
+* Header: This component contains the logo and the entire navigation  menu, when the app is showing the slider its background will be transparent, in other case will be black.
 * Logo: An static component that could be used in any part of the app, it's only purpose is show the logo and go to the home page
 * Menu: A responsive navigation menu for going to the different genres, the search bar or the home page.
 * MovieCard: This component shows the image, the title, and the release year of a single movie that belongs to the current view and its onClick show you the details about the movie.
@@ -30,6 +30,18 @@ For the style of each component it's used module css with the BEM methodology
 ### App in mobile version
 
 **Slider**  
+
 ![image](https://user-images.githubusercontent.com/98757236/178884397-64b29c6a-d17c-4c8a-900e-ca4f2fae76bd.png)
+
+**Movies grid**  
+
+![image](https://user-images.githubusercontent.com/98757236/179022813-978cd439-ef6f-4426-9e5c-bc8d5cd1ea1e.png)
+
+**Navigation**  
+
+![image](https://user-images.githubusercontent.com/98757236/179023109-2e726c34-600c-48d9-80ea-257e73d6ad65.png)
+
+
+
 
 
