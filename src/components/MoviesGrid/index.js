@@ -7,7 +7,7 @@ import { useLocation } from "wouter";
 import style from "./style.module.css";
 
 function MoviesGrid({ params, viewTitle, defaultTitle }) {
-  let currentParam = Object.keys(params)[0];
+  let currentParam = Object.keys(params)[0] || "";
   const [page, setPage] = useState(Number(params.page) || 1);
   const [location, setLocation] = useLocation();
   const PAGES_LIMIT = 500;
@@ -75,7 +75,8 @@ function MoviesGrid({ params, viewTitle, defaultTitle }) {
     goTo(0, 0);
   }, []);
   useEffect(() => {
-    setLocation(locations[currentParam]) || setLocation(DEFAULT_LOCATION);
+    setLocation(locations[currentParam] || DEFAULT_LOCATION) ||
+      setLocation(DEFAULT_LOCATION);
   }, [page]);
   useEffect(() => {
     setPage(Number(params.page));

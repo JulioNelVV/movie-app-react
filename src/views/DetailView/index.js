@@ -25,6 +25,7 @@ function DetailView({ ...props }) {
   }, []);
   useEffect(() => {
     setSliderDisplay("none");
+    
   }, [params]);
 
   if (!isLoading && error !== null) {

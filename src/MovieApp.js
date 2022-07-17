@@ -14,11 +14,10 @@ function MovieApp() {
   const headerRef = useRef(null);
   const movieDescriptionRef = useRef(null);
   const [slider, setSlider] = useState("flex");
-  const { sliderDisplay, setSliderDisplay } = useContext(globalContext);
+  
   const changeHeaderBackground = (entries) => {
     const [entry] = entries;
-    console.log(entry.isIntersecting);
-    console.log(sliderDisplay);
+
     if (entry.isIntersecting) {
       headerRef.current.style.backgroundColor = "transparent";
     } else {
@@ -49,7 +48,7 @@ function MovieApp() {
         setSliderDisplay: setSlider,
       }}
     >
-      <Router hook={useHashLocation}>
+      <Router hook={useHashLocation} >
         <Header headerRef={headerRef} />
         <Slider
           movieDescriptionRef={movieDescriptionRef}
@@ -69,9 +68,10 @@ function MovieApp() {
             component={GeneralView}
           />
           <Route path="/search/:keyword/:page" component={GeneralView} />
-          <Route path="/detail/:movie_name/:movie_id" component={DetailView} />
+          <Route path="/detail/:movie_name/:movie_id" component={DetailView}/>
           <Route component={NotFound}>Hola 404</Route>
         </Switch>
+       
         <Footer />
       </Router>
     </globalContext.Provider>

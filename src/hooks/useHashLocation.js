@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-const currentLoc = () => window.location.hash.replace("#", "") || "/";
+const currentLoc = () => window.location.hash.replace(/^#/, "") || "/";
 
 const useHashLocation = () => {
   const [loc, setLoc] = useState(currentLoc());

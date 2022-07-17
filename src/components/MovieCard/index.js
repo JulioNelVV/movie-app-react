@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { useLocation } from "wouter";
+
 import globalContext from "../../context/globalContext";
 import style from "./style.module.css";
 
 function MovieCard({ id, title, releaseDate, isLoading, error, poster_path }) {
-  const [location, setLocation] = useLocation();
   const { setSliderDisplay } = useContext(globalContext);
+  const [location, setLocation] = useLocation();
   let year = "unknow";
   const onClickHandler = () => {
     setSliderDisplay("none");
